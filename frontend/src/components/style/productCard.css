@@ -1,0 +1,54 @@
+.eth-icon {
+    max-width: 10px;
+}
+
+.cardDesc-wrapper {
+    max-width: 80ch;
+}
+
+.cardDesc {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.collection-avatar {
+    max-width: 65px;
+    min-width: 65px;
+    max-height: auto;
+
+    margin-top: -50px;
+    border: 2px solid white;
+    border-radius: 2px;
+}
+
+.collection-banner {
+    max-height: 6rem;
+    min-height: 6rem;
+    max-width: auto;
+}
+
+.collection-banner-t {
+    max-height: 12rem;
+    min-height: 12rem;
+    max-width: auto;
+}
+
+.collection-desc {
+    max-width: 75%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.collection-card {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.collection-card:hover {
+    -webkit-box-shadow: 0 27px 24px 0 rgb(0 0 0 / 20%),
+        0 40px 77px 0 rgb(0 0 0 / 22%) !important;
+    box-shadow: 0 27px 24px 0 rgb(0 0 0 / 20%),
+        0 40px 77px 0 rgb(0 0 0 / 22%) !important;
+    transition: box-shadow 0.3s ease-in-out;
+}

@@ -1,0 +1,51 @@
+#create-collection-wrapper{
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 0.3) 0%, rgba(9, 9, 121, 0.1) 35%, rgba(0, 212, 255, 0.4) 100%);
+    position: absolute;
+}
+
+#create-collection form {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 6em;
+}
+
+#create-collection input {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    padding: 0px 10px;
+    border: 1px solid #1266f1;
+    margin-bottom: 2em;
+}
+#create-collection textarea {
+    width: 100%;
+    height: 200px;
+    padding: 0px 10px;
+    border: 1px solid #1266f1;
+    background-color: transparent;
+    border-radius: 3px;
+    margin-bottom: 2em;
+}
+#create-collection h1,h6{
+    color: black;
+}
+#create-collection h1{
+    margin-bottom: 1.5em;
+}
+#create-collection hr {
+    margin-bottom: 2em;
+}
+#create-collection div{
+    margin-bottom: 2em;
+}
+#create-collection input{
+    width: 100%;
+    background-color: transparent;
+}
+#create-collection button{
+    display: block;
+    width: 100%;
+    
+}
+

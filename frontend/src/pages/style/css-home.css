@@ -1,0 +1,36 @@
+#home-content{
+    position: absolute;
+    width: 100%;
+    background-image: url('./home-bg.jpg');
+    
+}
+#home-wrapper{
+    background: rgb(255, 255, 255);
+    height: 100vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgb(255, 255, 255) 100%, rgba(0, 212, 255, 1) 100%);
+}
+#home-content--spacer{
+    margin-left: 3em;
+    margin-right: 3em;
+}
+.home--banner{
+    height: 100vh;
+    width: 100%;
+    padding-top: 3em;    
+}
+#home-content h1{
+    color: black;
+    margin-top: 3em;
+    font-size: 48px;
+}
+#home-content h3 {
+    font-weight: 400;
+}
+.home--banner__button{
+    height: 50px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.mh-10{
+    margin-top: 4em;
+}

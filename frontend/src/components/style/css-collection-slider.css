@@ -1,0 +1,21 @@
+.collection-slider__cbody{
+    overflow-x: auto;
+    margin-right: 1rem;
+}
+.collection-slider__cbody .col-3{
+    margin-left: 1rem;
+}
+.collection-slider__cbody div{
+    margin-bottom: 0!important;
+}
+.collection-slider__title{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 1.5rem;
+}
+.collection-slider__title i{
+    padding-right: 0.5vw;
+}
+.collection-slider__title span{
+    font-size: 1.5rem;
+}

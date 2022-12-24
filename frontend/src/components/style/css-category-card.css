@@ -1,0 +1,20 @@
+.category-card{
+    max-width: 350px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.category-card-img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 150px;
+    width: 350px
+    ;
+    object-fit: cover;
+}
+
+.category-card:hover {
+    -webkit-box-shadow: 0 27px 24px 0 rgb(0 0 0 / 20%),
+        0 40px 77px 0 rgb(0 0 0 / 22%) !important;
+    box-shadow: 0 27px 24px 0 rgb(0 0 0 / 20%),
+        0 40px 77px 0 rgb(0 0 0 / 22%) !important;
+    transition: box-shadow 0.3s ease-in-out;
+}

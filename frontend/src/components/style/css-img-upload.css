@@ -1,0 +1,98 @@
+/* GENERAL DIV FOR UPLOAD IMAGES */
+.img-upload__gen {
+    position: relative;
+}
+.img-upload__gen:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* UPLOAD BACKGROUND FOR CIRCLE*/
+.circle-upload{
+    width: 200px;
+    height: 200px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='black' stroke-width='11' stroke-dasharray='2%2c 6' stroke-dashoffset='32' stroke-linecap='butt'/%3e%3c/svg%3e");
+    border-radius: 100px;
+}
+/* DO NOT SHOW SELECT FILE BUTTON */
+input[type="file"] {
+    display: none;
+    background-color: transparent;
+}
+/* TO MAKE CIRCLE CLICK-INPUT */
+.image-upload--label__circle{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    z-index: 10;
+}
+/* UPLOAD BACKGROUND FOR RECTANGULAR SHAPES*/
+.rectangular-upload{
+    
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='23' ry='23' stroke='black' stroke-width='11' stroke-dasharray='2%2c 6' stroke-dashoffset='32' stroke-linecap='butt'/%3e%3c/svg%3e");
+    border-radius: 23px;
+}
+/* TO MAKE RECTANGULAR CLICK-INPUT */
+.image-upload--label__rectangle {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    border-radius: 23px;
+    z-index: 10;
+}
+
+/* ICON */
+
+/* THIS IS THE CLASS TO MAKE ICON HOVER-EFFECTABLE FOR CIRCLE*/
+.img-upload--icon-wrapper__circle{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    color: rgba(0, 0, 0, 0.15);
+}
+.img-upload--icon-wrapper__circle:hover .img-upload--icon{
+    color: rgba(0, 0, 0, 1);
+}
+
+/* LOCATING ICON FOR CIRCLE */
+.img-upload--icon__circle{
+    position:absolute;
+    top: 60px;
+    left: 60px;
+}
+
+/* THIS IS THE CLASS TO MAKE ICON HOVER-EFFECTABLE FOR RECTANGLE*/
+.img-upload--icon-wrapper__rectangle{
+    position: absolute;
+    color: rgba(0, 0, 0, 0.15);
+    border-radius: 23px;
+}
+/* TO LOCATE ICON FOR RECTANGLE */
+.img-upload--icon__rectangle{
+    position:absolute;
+}
+
+.img-upload--input-img__circle{
+    position: absolute;
+    display: block;
+    border-radius: 100px;
+    width: 197px;
+    height: 197px;
+    top: 1.5px;
+    left: 1.5px;
+}
+/* TO SHOW UPLOADED IMG FOR RECTANGLE */
+.img-upload--input-img__rectangular{
+    position: absolute;
+    display: block;
+    border-radius: 23px;
+    top: 1.5px;
+    left: 1.5px;
+}
+
+

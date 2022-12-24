@@ -1,0 +1,8 @@
+.mycollection-avatar{
+    border-radius: 20px;
+    max-width: 72px;
+}
+
+.mycollection-table td{
+    vertical-align: middle;
+}

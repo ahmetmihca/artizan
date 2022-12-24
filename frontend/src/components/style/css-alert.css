@@ -1,0 +1,21 @@
+.alert {
+    width: 70vw;
+    position:fixed;
+    z-index: 10;
+    top: 3px;
+    left: 15vw;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-family: "Roboto",
+    sans-serif;
+    font-weight: 300;
+}
+.alert-danger{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    opacity: 1;
+}
+

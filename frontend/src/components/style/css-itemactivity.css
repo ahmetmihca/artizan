@@ -1,0 +1,29 @@
+.item-activity--card__title i{
+    padding-left: 1vw;
+    padding-right: 0.5vw;
+}
+.item-activity--card__title span {
+    font-size: 1.2rem;
+}
+.item-activity--card{
+    max-height: 75vh;
+}
+.item-activity--card__body{
+    overflow-y: auto;
+}
+.item-activity__tbody i{
+    padding-right: 0.3em;
+}
+@media (max-height:550px) {
+    .item-activity--card {
+        max-height: 100vh;
+    }
+}
+
+.addr {
+    display: list-item;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:25ch;
+}

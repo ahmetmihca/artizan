@@ -1,0 +1,80 @@
+
+#create-nft__form
+{
+    position: relative;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #709fdc;
+    border-left: 1px solid #709fdc;
+    box-shadow: 2px 5px 3px 0px #709fdc,-2px 5px 3px 0px #709fdc;
+    color: #274684;
+    width: 70%;
+    padding: 2rem;
+}
+#create-nft__form p{
+    color: #000;
+}
+#create-nft__form h1,h2,h3,h4,h5,h6,p,input,textarea,img, label, select{
+    margin-bottom: 0.5rem;
+    border-color: #709fdc;
+}
+#create-nft__form input{
+    width: 60vw;
+    height: 5vh;
+    border-radius: 3px;
+    padding: 0px 10px;
+    border: 1px solid #709fdc;
+}
+#create-nft__form textarea{
+    width: 60vw;
+    padding: 0px 10px;
+}
+#create-nft__form select {
+    width: 60vw;
+    height: 5vh;
+    border-radius: 3px;
+    padding: 0px 10px;
+}
+#create-nft__form hr{
+    width: 60vw;
+}
+
+#create-nft__form option {
+    padding: 120px;
+}
+.buttons {
+    text-align: center;
+}
+
+.btn-hover {
+    width: 60vw;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    height: 55px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 4px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.btn-hover:focus {
+    outline: none;
+}
+.btn-hover.color-9 {
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}

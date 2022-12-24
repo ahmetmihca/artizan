@@ -1,0 +1,16 @@
+
+.details--content:nth-child(even) {
+    float: right;
+}
+.details--content:nth-child(2n+1) {
+    float: left;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.nft-details--box{
+    padding: 1vh 1vw;
+}

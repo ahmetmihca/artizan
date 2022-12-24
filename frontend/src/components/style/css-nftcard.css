@@ -1,0 +1,14 @@
+#nft-img-col {
+  max-width: 40rem
+}
+.card-body {
+  padding: 0.6rem 0.6rem;
+}
+#fav {
+  float: right;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

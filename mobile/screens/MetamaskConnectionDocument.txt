@@ -1,0 +1,25 @@
+To use connection state import file:
+import { useWalletConnect } from '@walletconnect/react-native-dapp';
+
+Then, create a constant accessor:
+const connector = useWalletConnect();
+
+Functions you need to implement:
+const connectWallet = React.useCallback(() => {
+    return connector.connect();
+  }, [connector]);
+
+  const killSession = React.useCallback(() => {
+    return connector.killSession();
+  }, [connector]);
+
+If you want to check whether user is connected:
+{!connector.connected && (
+)}
+
+If you want to log-in user:
+connectWallet()
+
+If you want to log-out user:
+killSession()
+

@@ -1,0 +1,63 @@
+#file-upload{
+    position: relative;
+    max-width: 500px;
+    max-height: 500px;
+    min-height: 200px;
+}
+#nft-file-input{
+    position: absolute;
+    min-height: 200px;
+    max-width: 500px;
+    max-height: 500px;
+    margin-bottom: 1rem;
+}
+#uploaded-img{
+    border-radius: 3px;
+    min-height: 200px;
+    max-width: 500px;
+    max-height: 500px;
+    
+}
+input[type="file"] {
+    display: none;
+    background-color: transparent;
+}
+.custom-file-upload {
+    position: absolute;
+    border: 1px solid #709fdc;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.custom-file-upload__again{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+.custom-file-upload__again p{
+    position: absolute;
+    left: 100px;
+}
+#file-upload__div{
+    padding: 30px;
+}
+#file-uploaded__div{
+    position:relative;
+}
+#file-uploaded__div i{
+    position: absolute;
+    color: white;
+
+}
+#file-uploaded__div i:hover {
+    position: absolute;
+    color: #709fdc;
+
+}
+#em{
+    width: 1em;
+    visibility:hidden;
+    display: none;
+}

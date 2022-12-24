@@ -1,0 +1,16 @@
+.ocard{
+    position: relative;
+    height: 350px;
+}
+.ocard--title i{
+    padding-left: 1vw;
+    padding-right: 0.5vw;
+}
+.ocard--title span {
+    font-size: 1.2rem;
+}
+.ocard--body{
+    height: 300px;
+    overflow-y: auto;
+    height: 300px;
+}

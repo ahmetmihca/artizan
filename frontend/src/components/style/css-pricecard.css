@@ -1,0 +1,25 @@
+.pcard--time i {
+    padding-left: 1vw;
+    padding-right: 0.5vw;
+}
+.pcard--time span{
+    font-size: 1.2rem;
+}
+.pcard--items{
+    padding-left: 1vw;
+    padding-top: 1vw;
+}
+.pcard--items span{
+    font-size: 1.1rem;
+    padding-right: 0.5vw;
+}
+.pcard--items i {
+    padding-right: 1vw;
+}
+.pcard--button{
+    margin-top: 1vw;
+    width: 50%;
+}
+.pcard--button span{
+    padding-right: 1vw;
+}
