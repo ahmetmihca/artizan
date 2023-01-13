@@ -5,7 +5,7 @@ const axios = require("axios").default
 const auth = require('../middlewares/auth');
 const Nft = require("../models/nft");
 const { ethers, ContractFactory } = require("ethers");
-const alchemyAPIKey = process.env["ALCHEMY_API_KEY"]
+const alchemyAPIUrl = process.env["ALCHEMY_API_URL"]
 const Auction = require("../contracts/Auction");
 
 
@@ -18,7 +18,7 @@ const marketContractAddress = "0x12d54855199a6A9361C798D0151825843eAD5D55".toLoc
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-    `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
+    alchemyAPIUrl // `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
 );
 
 const ContractDetails = require("../contracts/ContractDetails");

@@ -1,0 +1,3 @@
+node_modules/*
+*.lock
+backend/node/node_modules/*

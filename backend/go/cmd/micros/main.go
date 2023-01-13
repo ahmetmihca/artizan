@@ -22,7 +22,7 @@ type TX struct {
 
 var db *mongo.Database
 
-const mongoURI = "mongodb+srv://artizan:9s2NRJi2OpXZlJUH@cluster0.feljg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const mongoURI = "mongodb://localhost:27017" //"mongodb+srv://artizan:9s2NRJi2OpXZlJUH@cluster0.feljg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 var etherscanClient *etherscan.Client
 

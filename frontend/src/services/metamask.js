@@ -7,7 +7,7 @@ checkConnection();
 
 const onLoginHandler = async () => {
 
-  if (getWalletId() != false) {
+  if (getWalletId() !== false) {
     return;
   }
 

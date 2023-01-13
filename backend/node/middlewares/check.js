@@ -6,8 +6,9 @@ const axios = require("axios").default;
 
 require('dotenv').config()
 
+const alchemyAPIUrl = process.env["ALCHEMY_API_URL"]
 const web3 = createAlchemyWeb3(
-    `https://eth-ropsten.alchemyapi.io/v2/${process.env['ALCHEMY_API_KEY']}`,
+    alchemyAPIUrl // `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
 );
 
 function validateWalletID(walletID) {

@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth');
 const Nft = require("../models/nft");
 const { ethers } = require("ethers");
 
-const alchemyAPIKey = process.env["ALCHEMY_API_KEY"]
+const alchemyAPIUrl = process.env["ALCHEMY_API_URL"]
 
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
@@ -15,7 +15,7 @@ const marketContractAddress = "0x8e580182493ABe9eca3a4D9EE2081ea178B78636";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-    `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
+    alchemyAPIUrl // `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
 );
 
 const router = express.Router()

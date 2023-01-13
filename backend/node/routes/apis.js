@@ -15,11 +15,12 @@ const auth = require("../middlewares/auth");
 const check = require("../middlewares/check")
 
 const alchemyAPIKey = process.env["ALCHEMY_API_KEY"];
+const alchemyAPIUrl = process.env["ALCHEMY_API_URL"];
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-    `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`
+    alchemyAPIUrl // `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
 );
 
 const ContractDetails = require("../contracts/ContractDetails");
@@ -208,7 +209,7 @@ router.get("/asset/:contract/:token", async (req, res) => {
                 
                 p3 = axios({
                     method: "get",
-                    url: `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}/getOwnersForToken?contractAddress=${contractAddr}&tokenId=${tokenId}`,
+                    url: `${alchemyAPIUrl}/getOwnersForToken?contractAddress=${contractAddr}&tokenId=${tokenId}`,
                     headers: {},
                 });
             }
@@ -419,7 +420,7 @@ router.get("/asset/:contract/:token", async (req, res) => {
 router.get("/listNFT/contract/:contract/:token?", (req, res) => {
     res.contentType("application/json");
 
-    const baseURL = `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}/getNFTsForCollection`;
+    const baseURL = `${alchemyAPIUrl}/getNFTsForCollection`;
     const contractAddr = req.params.contract;
     const startToken = req.params.token;
     const withMetadata = "false";

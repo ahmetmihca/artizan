@@ -2,10 +2,10 @@ require('dotenv').config()
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 const ContractDetails = require("./ContractDetails");
-const alchemyAPIKey = process.env["ALCHEMY_API_KEY"]
+const alchemyAPIUrl = process.env["ALCHEMY_API_URL"]
 
 const web3 = createAlchemyWeb3(
-    `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
+    alchemyAPIUrl // `https://eth-ropsten.alchemyapi.io/v2/${alchemyAPIKey}`,
 );
 
 const market1155ContractABI = require('./Artizan1155Market.json')
