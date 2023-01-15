@@ -1,14 +1,22 @@
+const nftContractAddress =
+  "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
+const marketContractAddress =
+  "0x7FC6699304CECF687ce559A779221D9fdD5F807A".toLocaleLowerCase();
+const auctionContractAddress =
+  "0x698D0D04229444E061604B533DD264E47BFEa0ff".toLocaleLowerCase();
 
-const nftContractAddress = "0x7ae5191f057ab66544f4877A951a397D8414D430".toLocaleLowerCase();
-const marketContractAddress = "0x12d54855199a6A9361C798D0151825843eAD5D55".toLocaleLowerCase();
-const auctionContractAddress = "0xca8641663E2658b8e09F575f5492D45918f35E1e".toLocaleLowerCase();
+const nftContractAddress1155 =
+  "0xf3002665F83fC79A1125bc9E02588c9563fd67b9".toLocaleLowerCase();
+const marketContractAddress1155 =
+  "0x52Fc9e3481a2fd3acA3F795047Bb609F4eD57203".toLocaleLowerCase();
 
-const nftContractAddress1155 = "0x7C13431e8695C436D7611C1750CB2a63c06C8BB5".toLocaleLowerCase();
-const marketContractAddress1155 = "0x5E27327c9Ce6fcE310a540Fd7B775Fd76D76782C".toLocaleLowerCase();
+const list1155contracts = [nftContractAddress1155, marketContractAddress1155];
 
-
-const list1155contracts = [nftContractAddress1155, "0xd26e22d16113c63d8e1c3d7ee96e85944e2e786b".toLocaleLowerCase()]
-
-module.exports = {nftContractAddress, marketContractAddress, auctionContractAddress, nftContractAddress1155, marketContractAddress1155, list1155contracts}
-
-
+module.exports = {
+  nftContractAddress,
+  marketContractAddress,
+  auctionContractAddress,
+  nftContractAddress1155,
+  marketContractAddress1155,
+  list1155contracts,
+};
