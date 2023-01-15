@@ -9,8 +9,9 @@ const headers = {
 };
 
 const get_asset = async (contract, id, type = 0) => {
-    let url = `${BASE_URL}asset/${contract}/${id}`;
-    if(type == "meta"){
+    console.log(`ASDASDASDASDASDASDASD ${contract} ${id} ${type}`)
+    let url = `${BASE_URL}/asset/${contract}/${id}`;
+    if(type === "meta"){
         url += '?filter=nft_meta';
     }
 

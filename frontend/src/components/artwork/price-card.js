@@ -97,7 +97,7 @@ function PriceCard(props) {
                         ],
                     });
 
-                alert("✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" + txHash);
+                alert("✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" + txHash);
             }
 
         }
@@ -134,7 +134,7 @@ function PriceCard(props) {
                         ],
                     });
 
-                alert("✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" + txHash);
+                alert("✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" + txHash);
             }
 
         }

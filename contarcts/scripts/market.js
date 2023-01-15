@@ -10,7 +10,7 @@ const web3 = createAlchemyWeb3(API_URL);
 
 const contract1 = require("../artifacts/contracts/ArtizanNFT.sol/ArtizanNFT.json");
 //console.log(JSON.stringify(contract.abi));
-const contractAddress1 = "0xfCBa2352DF25158310c37CcEEB3c4dE5264fA2C0";
+const contractAddress1 = "0xf3002665F83fC79A1125bc9E02588c9563fd67b9";
 
 
 const nftContract1 = new web3.eth.Contract(contract1.abi, contractAddress1);
@@ -36,7 +36,7 @@ mintNFT("https://gateway.pinata.cloud/ipfs/Qmbjg2uzqop2kpDwfN8CxhzJpmi34HwJrtXfP
 
 //Market
 const contract2 = require("../artifacts/contracts/ArtizanMarket.sol/ArtizanMarket.json");
-const contractAddress2="0x950877bb1cfC64E90D56fBe0FCD6D18515100663";
+const contractAddress2="0x52Fc9e3481a2fd3acA3F795047Bb609F4eD57203";
 
 const API_URL2="https://speedy-nodes-nyc.moralis.io/9d80e0ead67926f01ab12c11/eth/ropsten"
 

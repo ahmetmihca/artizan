@@ -65,7 +65,11 @@ async function getNftMetadataFromChain(tokenID) {
 
         let resp;
         if (token.startsWith("ipfs://")) {
-            resp = await axios.get(`https://gateway.ipfs.io/ipfs/${token.split("//")[1]}`);
+            // write axios header, change user agent,             resp = await axios.get(`https://gateway.ipfs.io/ipfs/${token.split("//")[1]}`);
+            //generate random header every time to add  headers
+
+           resp = await axios.get(`https://cf-ipfs.com/ipfs/${token.split("//")[1]}`)// { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36","X-Requested-With":"XMLHttpRequest" } });
+
         }
         else {
             resp = await axios.get(`https://gateway.ipfs.io/ipfs/${token.split("ipfs/")[1]}`);
@@ -73,8 +77,9 @@ async function getNftMetadataFromChain(tokenID) {
 
         return resp.data;
     }
-    catch
+    catch(err)
     {
+        console.log(err)
         console.log("problem");
         return data;
     }
@@ -555,7 +560,7 @@ router.get("/listTransaction/user/:user/:page?", async (req, res) => {
 
     let config = {
         method: "get",
-        url: `https://api-ropsten.etherscan.io/api?module=account&action=txlist&address=${user}&startblock=0&endblock=99999999&page=${page}&offset=10&sort=desc&apikey=${process.env.ETHERSCAN_API_KEY}`,
+        url: `https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=${user}&startblock=0&endblock=99999999&page=${page}&offset=10&sort=desc&apikey=${process.env.ETHERSCAN_API_KEY}`,
     };
 
     let etherscan_response = await axios.request(config);

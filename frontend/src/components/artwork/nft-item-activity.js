@@ -39,7 +39,7 @@ function ItemActivity(props) {
                                         }
                                         <td  ><a href="#" className='addr'>{element.from}</a></td>
                                         <td ><a href="#" className='addr'>{element.to}</a></td>
-                                        <td><MDBIcon fas icon="file-import" /><a href={'https://ropsten.etherscan.io/tx/' + element.tx_hash} target="_blank"> See</a></td>
+                                        <td><MDBIcon fas icon="file-import" /><a href={'https://mumbai.polygonscan.com/tx/' + element.tx_hash} target="_blank" rel="noreferrer"> See</a></td>
                                     </tr>
                                 );
                             }) : '...'}

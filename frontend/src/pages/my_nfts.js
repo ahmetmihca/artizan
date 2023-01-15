@@ -125,6 +125,7 @@ function MyNft() {
         localStorage.getItem("wallet")
       );
 
+      console.log({nfts})
       await Promise.all(
         nfts.map(async (element) => {
           let asset = await asset_services.get_asset(
@@ -138,6 +139,7 @@ function MyNft() {
             contract: element.contract,
             price: element.cost,
           };
+          console.log({a, onsale_nfts})
           setOnSale((onsale_nfts) => [...onsale_nfts, a]);
         })
       );
@@ -229,7 +231,7 @@ function MyNft() {
         });
 
         alert(
-          "✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" +
+          "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
             txHash
         );
       }
@@ -275,7 +277,7 @@ function MyNft() {
         });
 
         alert(
-          "✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" +
+          "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
             txHash
         );
       }
@@ -311,7 +313,7 @@ function MyNft() {
         });
 
         alert(
-          "✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" +
+          "✅ Check out your transaction on Polygonscan: https://mumbai.polygonscan.com/tx/" +
             txHash
         );
       }

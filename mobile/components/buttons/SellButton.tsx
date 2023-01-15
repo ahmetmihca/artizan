@@ -46,7 +46,7 @@ const SellButton = ({contract,token}: {contract: string, token: string}) =>{
     }
     async function transactionAlert({transactionRes}: {transactionRes:Object})
     {
-        // 'https://ropsten.etherscan.io/tx/' 
+        // 'https://mumbai.polygonscan.com/tx/' 
     }
     function makeAlert(){
         if(price.length != 0)
@@ -91,12 +91,12 @@ const SellButton = ({contract,token}: {contract: string, token: string}) =>{
             <View style={{width: '100%', flexDirection:'row', backgroundColor: theme.backgroundSecondary, justifyContent:'flex-start' }}>
                 <View style={{width: '75%',backgroundColor: theme.backgroundSecondary, justifyContent:'center', position: 'absolute', right: 100, bottom: 90, backgroundColor: theme.backgroundSecondary, width: 200, height: 50, textAlign:'center', flex:1, justifyContent: 'center',alignItems:'center', lineHeight:50, borderRadius:10 }}>
                     <Text style={{color: theme.text,}}>Your transaction is pending.</Text>
-                    <TouchableOpacity style={{ position: 'absolute', backgroundColor: theme.backgroundSecondary, width: 200, height: 50, flex:1, justifyContent: 'center',alignItems:'center', borderRadius:10 }} onPress={() => {Linking.openURL('https://ropsten.etherscan.io/tx/'+transactionHash)}}>
-                        <Text style={{color:theme.linkColor}}>{('https://ropsten.etherscan.io/tx/'+transactionHash).substring(0,35) +'..'}</Text>
+                    <TouchableOpacity style={{ position: 'absolute', backgroundColor: theme.backgroundSecondary, width: 200, height: 50, flex:1, justifyContent: 'center',alignItems:'center', borderRadius:10 }} onPress={() => {Linking.openURL('https://mumbai.polygonscan.com/tx/'+transactionHash)}}>
+                        <Text style={{color:theme.linkColor}}>{('https://mumbai.polygonscan.com/tx/'+transactionHash).substring(0,35) +'..'}</Text>
                     </TouchableOpacity>
                 </View>
                 
-                <ShareButton props={{msg: 'https://ropsten.etherscan.io/tx/'+transactionHash}}></ShareButton>
+                <ShareButton props={{msg: 'https://mumbai.polygonscan.com/tx/'+transactionHash}}></ShareButton>
             </View>
             
           }

@@ -54,7 +54,7 @@ const BidButton = ({token}: {token: string}) =>{
     }
     async function transactionAlert({transactionRes}: {transactionRes:Object})
     {
-        // 'https://ropsten.etherscan.io/tx/' 
+        // 'https://mumbai.polygonscan.com/tx/' 
     }
     function makeAlert(){
         if(price.length != 0)
@@ -99,12 +99,12 @@ const BidButton = ({token}: {token: string}) =>{
             <View style={{width: '100%', flexDirection:'row', backgroundColor: theme.backgroundPrimary, justifyContent:'flex-start',  }}>
                 <View style={{width: '100%',backgroundColor: theme.backgroundPrimary, justifyContent:'center'}}>
                     <Text style={{color: theme.text}}>Your transaction is pending.</Text>
-                    <TouchableOpacity onPress={() => {Linking.openURL('https://ropsten.etherscan.io/tx/'+transactionHash)}}>
-                        <Text style={{color:theme.linkColor}}>{('https://ropsten.etherscan.io/tx/'+transactionHash).substring(0,35) +'..'}</Text>
+                    <TouchableOpacity onPress={() => {Linking.openURL('https://mumbai.polygonscan.com/tx/'+transactionHash)}}>
+                        <Text style={{color:theme.linkColor}}>{('https://mumbai.polygonscan.com/tx/'+transactionHash).substring(0,35) +'..'}</Text>
                     </TouchableOpacity>
                 </View>
                 
-                <ShareButton props={{msg: 'https://ropsten.etherscan.io/tx/'+transactionHash}}></ShareButton>
+                <ShareButton props={{msg: 'https://mumbai.polygonscan.com/tx/'+transactionHash}}></ShareButton>
             </View>
             
           }

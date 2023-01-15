@@ -13,8 +13,8 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 const marketContractABI = require('../contracts/ArtizanMarket.json')
 const auctionContractABI = require('../contracts/ArtizanAuction.json')
-const nftContractAddress = "0x7ae5191f057ab66544f4877A951a397D8414D430".toLocaleLowerCase();
-const marketContractAddress = "0x12d54855199a6A9361C798D0151825843eAD5D55".toLocaleLowerCase();
+const nftContractAddress = "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
+const marketContractAddress = "0x7FC6699304CECF687ce559A779221D9fdD5F807A".toLocaleLowerCase();
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
@@ -290,6 +290,8 @@ router.get('/items', async (req, res) => {
                 owner: ContractDetails.marketContractAddress,
             });
 
+            console.log({"NFTS":nfts})
+
             let items = nfts.ownedNfts.filter((x) => x.metadata && x.metadata.creator.toLowerCase() == req.query['user'].toLowerCase());
             let resp = []
 
@@ -302,7 +304,7 @@ router.get('/items', async (req, res) => {
 
             // let items = await globalContract.methods.ListUsersAllItems(addr.toLocaleLowerCase()).call();
             // items = ParseMarketItem(items).filter((x) => x.sold != true && x.tokenID != 0);
-            res.json(resp); finishBidfinishBid
+            res.json(resp); 
             return;
         }
         catch (err) {

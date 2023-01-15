@@ -43,7 +43,7 @@ export default function CreateArtScreen({ navigation }: RootTabScreenProps<'Crea
   // end states
   const [loading, setLoading] = useState<boolean>(false);
   const [minted, setMinted] = useState<boolean>(false);
-  const [transactionLink, setTransactionLink] = useState<string>('https://ropsten.etherscan.io/tx/');
+  const [transactionLink, setTransactionLink] = useState<string>('https://mumbai.polygonscan.com/tx/');
 
   const handleInputChange = (name:any,value:any) => {
     setFormData({
