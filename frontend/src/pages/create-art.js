@@ -31,14 +31,14 @@ function CreateArt() {
   let handleSubmit = async (event) => {
     event.preventDefault();
 
-    // if (loading) {
-    //     alert("On progress event");
-    //     return;
-    // }
+    if (loading) {
+      alert("On progress event");
+      return;
+    }
 
-    // setLoading(true)
-    // setModal(true)
-    // setSatus("Uploading to IPFS");
+    setLoading(true);
+    setModal(true);
+    setSatus("Uploading to IPFS");
 
     let asset = event.target[0].files[0];
     let name = event.target[1].value;

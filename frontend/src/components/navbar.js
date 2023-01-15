@@ -81,7 +81,14 @@ function Navbar(props) {
             <MDBIcon icon="search py-0" size="lg" />
           </MDBBtn>
         </form>
+
         <MDBNavbarNav className="justify-content-end mx-5 my-1">
+          <MDBNavbarItem className="dropdown">
+            <MDBNavbarLink href="/add-to-whitelist" aria-current="page">
+              Add to whitelist
+            </MDBNavbarLink>
+          </MDBNavbarItem>
+
           <MDBNavbarItem className="dropdown">
             <MDBNavbarLink
               href="/explore"
