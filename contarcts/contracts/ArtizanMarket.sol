@@ -18,6 +18,16 @@ contract ArtizanMarket is ReentrancyGuard {
 
     constructor() {
         owner = payable(msg.sender);
+        addToWhitelist(payable(msg.sender), "contract_owner");
+    }
+
+    // The contract defines a struct to represent an address on the
+    // whitelist.
+    struct WhitelistEntry {
+        // The address of the whitelisted account.
+        address account;
+        // The name of the whitelisted account.
+        string name;
     }
 
     struct MarketItem {
@@ -32,6 +42,73 @@ contract ArtizanMarket is ReentrancyGuard {
 
     mapping(uint256 => MarketItem) private idMarketItem;
     mapping(uint256 => uint256) private tokenToItem;
+
+    // The contract defines a mapping to store the whitelist entries.
+    // The keys of the mapping are the whitelisted addresses, and the
+    // values are the corresponding whitelist entries.
+    mapping(address => WhitelistEntry) public whitelist;
+
+    // The contract also defines an array to store the whitelist entries
+    // in the order in which they were added. This allows us to iterate
+    // over the whitelist entries in the order in which they were added.
+    WhitelistEntry[] public whitelistArray;
+
+    // The contract defines an event that is emitted whenever a new
+    // address is added to the whitelist.
+    event WhitelistAdded(
+        // The address of the account that was added to the whitelist.
+        address account,
+        // The name of the account that was added to the whitelist.
+        string name
+    );
+
+    // The contract defines a function to check if a given address is
+    // on the whitelist.
+    function isWhitelisted(address account) public view returns (bool) {
+        // Return true if the given address is on the whitelist,
+        // and false otherwise.
+        return whitelist[account].account != address(0);
+    }
+    // The contract defines a function to add a new address to the
+    // whitelist. Only the contract owner is allowed to call this
+    // function.
+    function addToWhitelist(address account, string memory name)
+        public
+        onlyOwner
+    {
+        // Ensure that the given address is not already on the whitelist.
+        require(
+            whitelist[account].account == address(0),
+            "Address is already on the whitelist."
+        );
+
+        // Create a new whitelist entry for the given address.
+        WhitelistEntry memory entry = WhitelistEntry({
+            account: account,
+            name: name
+        });
+
+        // Add the entry to the whitelist mapping and array.
+        whitelist[account] = entry;
+        whitelistArray.push(entry);
+
+        //whitelistArray[0].name= "contractOwnerUgur";
+
+        // Emit an event to indicate that the address was added to the whitelist.
+        emit WhitelistAdded(account, name);
+    }
+    modifier onlyOwner() {
+        require(
+            msg.sender == owner,
+            "Only owner of the marketplace can change this"
+        );
+        _;
+    }
+    // Define the owner() function to return the contract owner.
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
 
     event MarketItemCreation(
         address nftContract,
