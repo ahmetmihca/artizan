@@ -77,11 +77,10 @@ function Navbar(props) {
             className="form-control-custom px-2 search-bar"
             placeholder="Search items, collections and accounts"
           />
-          <MDBBtn className="search-btn">
+           <MDBBtn className="search-btn" style={{margin: 0}}>
             <MDBIcon icon="search py-0" size="lg" />
           </MDBBtn>
         </form>
-
         <MDBNavbarNav className="justify-content-end mx-5 my-1">
           {walletConnected & (isContractOwner == "true") ? (
             <MDBNavbarItem className="dropdown">
@@ -98,14 +97,14 @@ function Navbar(props) {
               aria-current="page"
               className="dropbtn"
             >
-              🔎 Explore Collections
+              🔎 Explore Memberships
             </MDBNavbarLink>
             <DropdownList dropdowntype="Explore"></DropdownList>
           </MDBNavbarItem>
 
           <MDBNavbarItem className="dropdown">
             <MDBNavbarLink href="/my_nfts" aria-current="page">
-              🎒 My Items
+              🎫 My Memberships
             </MDBNavbarLink>
           </MDBNavbarItem>
 
