@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 import {
   MDBInput,
   MDBCol,
@@ -38,12 +39,26 @@ const AddToWhitelist = ({ addToWhitelist }) => {
         <MDBBtn
           type="submit"
           block
-          onClick={async () =>
-            await trade_services.addToWhitelist(
+          onClick={async (e) => {
+            e.preventDefault();
+            const res = await trade_services.addToWhitelist(
               addressToAdd,
               localStorage.getItem("wallet"),
-              username
+              username,
+              Cookies.get('token')
             )
+            await window.ethereum.request({
+              method: "eth_sendTransaction",
+              params: [
+                {
+                  to: res.to,
+                  from: res.from,
+                  gas: "100000",
+                  data: res.data,
+                },
+              ],
+            });
+          }
           }
         >
           Add

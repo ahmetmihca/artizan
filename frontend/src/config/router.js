@@ -41,7 +41,7 @@ export default function MainRouter() {
       <Route path="/watchlist" element={<WatchlistPage></WatchlistPage>} />
       <Route path="/favorites" element={<Favorites></Favorites>} />
       <Route path="/my_nfts" element={<MyNft></MyNft>} />
-      <Route path="/add-to-whitelist" element={<AddToWhitelist />} />
+      <Route path="/add-to-whitelist" element={<AddToWhitelist></AddToWhitelist>} />
     </Routes>
   );
 }
