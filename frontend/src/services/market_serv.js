@@ -60,55 +60,17 @@ const buyNft = async (contract, token, price, wallet, auth) => {
   return response.data;
 };
 
-const getMarketItems = async (user = null, auction = null) => {
+const getMarketItems = async (user = null) => {
   let url = BASE_URL + `/items?`;
   if (user != null) {
     url += `user=${user}&`;
-  }
-  if (auction == true) {
-    url += `auction=true&`;
   }
 
   const response = await axios.get(url, {}, headers);
   return response.data;
 };
 
-// Auction Methods
 
-const create_auction = async (contract, token, price, date, auth) => {
-  // headers["Content-Type"] = "multipart/form-data";
-  headers["Authorization"] = `jwt ${auth}`;
-
-  const response = await axios.post(
-    BASE_URL + `/create_auction`,
-    {
-      contract: contract,
-      tokenID: token,
-      price: price,
-      date: date,
-    },
-    { headers: headers }
-  );
-
-  return response.data;
-};
-
-const sendBidOffer = async (token, price, auth) => {
-  // headers["Content-Type"] = "multipart/form-data";
-
-  headers["Authorization"] = `jwt ${auth}`;
-
-  const response = await axios.post(
-    BASE_URL + `/create_bid`,
-    {
-      token: token,
-      price: price,
-    },
-    { headers: headers }
-  );
-
-  return response.data;
-};
 
 const addToWhitelist = async (username, walletAddress, auth) => {
   headers["Authorization"] = `jwt ${auth}`;
@@ -159,8 +121,6 @@ const trade_services = {
   getMarketItems,
   stopSale,
   buyNft,
-  create_auction,
-  sendBidOffer,
 };
 
 export default trade_services;

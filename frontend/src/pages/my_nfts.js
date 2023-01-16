@@ -34,7 +34,6 @@ import "./style/css-mycollection.css";
 function MyNft() {
   const [collections, setCollections] = useState([]);
   const [user_nfts, setUserNfts] = useState([]);
-  const [auctions, setAuctions] = useState([]);
   const [fillActive, setFillActive] = useState("tab1");
   const [onsale_nfts, setOnSale] = useState([]);
   const [centredModal, setCentredModal] = useState(false);
@@ -164,81 +163,7 @@ function MyNft() {
     alert(res.status);
   };
 
-  let fetchAuctions = async (event) => {
-    const fetch_auctions = async () => {
-      setAuctions([]);
 
-      let nfts = await market_services.getMarketItems(
-        localStorage.getItem("wallet"),
-        true
-      );
-
-      await Promise.all(
-        nfts.map(async (element) => {
-          let asset = await asset_services.get_asset(
-            element.contract,
-            element.token,
-            "meta"
-          );
-          let a = {
-            asset: asset,
-            token: element.token,
-            contract: element.contract,
-            highestBid: element.highestBid,
-            endAt: element.endAt,
-          };
-          setAuctions((auctions) => [...auctions, a]);
-        })
-      );
-    };
-
-    fetch_auctions();
-  };
-
-  let createAuctionHandler = async (event) => {
-    event.preventDefault();
-
-    let tokenID = event.target[0].value;
-    let contract = event.target[1].value;
-    let date = new Date(document.getElementById("datetime").value);
-    let price = event.target[3].value;
-
-    let res = await market_services.create_auction(
-      contract,
-      tokenID,
-      price,
-      date,
-      Cookies.get("token")
-    );
-    if (res["status"]) {
-      alert(res["status"]);
-      return;
-    }
-
-    try {
-      if (res != null) {
-        const txHash = await window.ethereum.request({
-          method: "eth_sendTransaction",
-          params: [
-            {
-              to: res.to,
-              from: res.from,
-              data: res.data,
-              gas: "100000",
-              value: "0x2386F26FC10000",
-            },
-          ],
-        });
-
-        alert(
-          "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
-            txHash
-        );
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   let sellNftHandler = async (event) => {
     event.preventDefault();
@@ -344,17 +269,6 @@ function MyNft() {
                 active={fillActive === "tab2"}
               >
                 <MDBIcon fas icon="paint-roller" /> On Sale
-              </MDBTabsLink>
-            </MDBTabsItem>
-            <MDBTabsItem>
-              <MDBTabsLink
-                onClick={() => {
-                  handleFillClick("tab3");
-                  fetchAuctions();
-                }}
-                active={fillActive === "tab3"}
-              >
-                <MDBIcon fas icon="stopwatch" /> On Auction
               </MDBTabsLink>
             </MDBTabsItem>
           </MDBTabs>
@@ -557,49 +471,6 @@ function MyNft() {
                       {/* <th scope='col'>Update</th> */}
                     </tr>
                   </MDBTableHead>
-                  <MDBTableBody>
-                    {auctions
-                      ? auctions.map((nft, i) => {
-                          return (
-                            <tr className="mycollection-table">
-                              <th scope="row">
-                                <a href={`/asset/${nft.contract}/${nft.token}`}>
-                                  {isFetchingNfts ? (
-                                    ""
-                                  ) : (
-                                    <img
-                                      className="mycollection-avatar"
-                                      src={AssertURL.convert_img(
-                                        nft.asset.imgURL
-                                      )}
-                                    ></img>
-                                  )}
-                                </a>
-                              </th>
-                              <td>{nft.contract}</td>
-                              <td>{nft.token}</td>
-                              <td>{nft.asset.name}</td>
-                              <td>
-                                <MDBIcon fab icon="ethereum" />{" "}
-                                {(
-                                  parseInt(nft.highestBid) / 1e18
-                                ).toLocaleString()}
-                              </td>
-                              <td>
-                                <MDBBtn
-                                  color="warning"
-                                  href={`/asset/${nft.contract}/${nft.token}`}
-                                >
-                                  See Listing
-                                </MDBBtn>
-                              </td>
-
-                              {/* <td>{nft.asset.description}</td> */}
-                            </tr>
-                          );
-                        })
-                      : "..."}
-                  </MDBTableBody>
                 </MDBTable>
               </MDBRow>
             </MDBTabsPane>
@@ -675,32 +546,7 @@ function MyNft() {
                 ""
               )}
 
-              {sellingOption == "bid" ? (
-                <form onSubmit={createAuctionHandler}>
-                  <input hidden="true" value={selectedNFT.token}></input>
-                  <input hidden="true" value={selectedNFT.contract}></input>
-
-                  <br />
-                  <p>Select the end date of bid</p>
-                  <MDBInput
-                    id="datetime"
-                    name="date"
-                    type={"datetime-local"}
-                  ></MDBInput>
-
-                  <p>Minimum price</p>
-                  <MDBInput
-                    name="price"
-                    type={"text"}
-                    placeholder="Price"
-                  ></MDBInput>
-                  <MDBBtn color="success">
-                    <MDBIcon fas icon="shopping-cart" /> Sell NFT
-                  </MDBBtn>
-                </form>
-              ) : (
-                ""
-              )}
+  
             </MDBModalBody>
           </MDBModalContent>
         </MDBModalDialog>

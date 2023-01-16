@@ -4,7 +4,6 @@ const fs = require("fs");
 const util = require("util");
 const FormData = require("form-data");
 const Nft = require("../models/nft");
-const Auction = require("../contracts/Auction");
 
 require("dotenv").config();
 
@@ -339,31 +338,9 @@ router.get("/asset/:contract/:token", async (req, res) => {
             // This should have a price
             if (contractAddr.toLowerCase() == ContractDetails.nftContractAddress || ContractDetails.list1155contracts.includes(contractAddr))
             {
-                // On Auction
-                if (await Auction.isTokenOnAuction(contractAddr, tokenId)) {
-                    let auctionDetails = await Auction.getAuctionDetails(contractAddr, tokenId);
-
-                    console.log(auctionDetails);
-
-                    data.onBidding = true;
-                    data.auctionEnds = auctionDetails.endAt
-                    data.highestBid = auctionDetails.highestBid;
-
-                    let biddingDetails = await Auction.getAuctionBiddingDetails(contractAddr, tokenId);
-
-                    let bids = []
-                    biddingDetails.forEach((element) => {
-                        bids.push({
-                            "bidder": element.bidder,
-                            "value": element.bid
-                        })
-                    })
-
-                    data.bidHistory = bids
-                }
 
                 // On Sale
-                else if( contractAddr.toLowerCase() == ContractDetails.nftContractAddress) {
+                if( contractAddr.toLowerCase() == ContractDetails.nftContractAddress) {
                     let item = await MarketContract.methods.NFTItem(tokenId).call();
 
                     if (!item["sold"] && item["nftContract"] != "0x0000000000000000000000000000000000000000") {

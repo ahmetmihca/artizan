@@ -6,13 +6,11 @@ const auth = require('../middlewares/auth');
 const Nft = require("../models/nft");
 const { ethers, ContractFactory } = require("ethers");
 const alchemyAPIUrl = process.env["ALCHEMY_API_URL"]
-const Auction = require("../contracts/Auction");
 
 
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 const marketContractABI = require('../contracts/ArtizanMarket.json')
-const auctionContractABI = require('../contracts/ArtizanAuction.json')
 const nftContractAddress = "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
 const marketContractAddress = "0xF92acb3Fdb26ca19aA955feaCD2996f4AaB27b23".toLocaleLowerCase();
 
@@ -27,7 +25,6 @@ const Market1155Helper = require("../contracts/Market1155");
 const router = express.Router()
 
 const globalContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
-const auctionContract = new web3.eth.Contract(auctionContractABI.abi, ContractDetails.auctionContractAddress);
 
 
 function MarketItem(contract, token, cost, sold) {
@@ -159,87 +156,6 @@ router.post('/sell', auth, async (req, res) => {
     return;
 })
 
-
-router.post('/create_auction', auth, async (req, res) => {
-
-    let { contract, tokenID, price, date } = req.body;
-    console.log(tokenID)
-
-    let nft = await Nft.findOne({
-        contract: contract,
-        tokenID: tokenID
-    });
-
-    if (!nft) {
-        res.json({ "status": "not found" })
-        return;
-    }
-
-    let tokenInt;
-    if (isHex(tokenID)) {
-        tokenInt = parseInt(tokenID, 16)
-    }
-
-
-    date = new Date(date)
-    date = date.getTime()
-
-    let now = Date.now()
-    let date_sec = Math.floor((date - now) / 1000)
-
-    console.log(date_sec)
-
-    const transaction = await auctionContract.methods.createBidItem(nftContractAddress, tokenInt, web3.utils.toWei(price, 'ether'), date_sec).encodeABI();
-
-    const transactionParameters = {
-        to: ContractDetails.auctionContractAddress, // Required except during contract publications.
-        from: req.user.id, // must match user's active address.
-        data: transaction,
-        value: web3.utils.toWei('0.01', 'ether')
-    };
-
-    res.json(transactionParameters);
-    return;
-})
-
-
-router.post('/create_bid', auth, async (req, res) => {
-
-    const { token, price } = req.body;
-
-    console.log(token, price);
-
-
-    let transactionDetails = await auctionContract.methods.placeBid(token).encodeABI();
-
-    const transactionParameters = {
-        to: ContractDetails.auctionContractAddress,
-        data: transactionDetails,
-        value: web3.utils.toWei(price, 'ether')
-    };
-
-    res.json(transactionParameters);
-    return;
-});
-
-
-router.post('/stop_bid', auth, async (req, res) => {
-
-    const { tokenID, price } = req.body;
-
-    let stopContract = await auctionContract.methods.placeBid(tokenID).encodeABI();
-
-    const transactionParameters = {
-        to: marketContractAddress,
-        from: req.user.id,
-        data: stopContract,
-    };
-
-    res.json(transactionParameters);
-    return;
-});
-
-
 router.post('/buy', auth, async (req, res) => {
 
     
@@ -297,39 +213,11 @@ router.post('/stopSale', auth, async (req, res) => {
     return;
 });
 
-router.get('/auctions', async (req, res) => {
-
-    if (req.query['user'] != null) {
-
-        let ss = await Auction.getUsersAuctions(req.query['a']);
-        console.log(ss);
-    }
-
-
-});
 
 
 router.get('/items', async (req, res) => {
 
-    if (req.query['user'] != null && req.query['auction'] == 'true') {
-        let auctions = await Auction.getUsersAuctions(req.query['user']);
-
-        let auction_resp = []
-
-        auctions.forEach((element) => {
-            auction_resp.push({
-                "contract": element.nft,
-                "token": element.nftid,
-                "endAt": element.endAt,
-                "ended": element.ended,
-                "highestBid": element.highestBid,
-            })
-        });
-
-        res.json(auction_resp);
-        return;
-    }
-    else if (req.query['user'] != null) {
+    if (req.query['user'] != null) {
         try {
             // let addr = req.query['user'].substring(2);
             let addr = req.query['user'];
@@ -381,28 +269,7 @@ router.get('/items', async (req, res) => {
 })
 
 
-// Auction
-// On sale
-router.get('/itemz', async (req, res) => {
 
-    // let resz = await getAuctionBiddingDetails(nftContractAddress, req.query['a']);
-    let ss = await Auction.getUsersAuctions(req.query['a']);
-    console.log(ss);
-
-
-    res.json({ "asd": "asd" });
-    return;
-
-    if (req.query['auction']) {
-
-    }
-
-    const items = await globalContract.methods.ListItemsOnSale().call();
-
-    console.log(items)
-    res.json({ "asd": "asd" });
-    return;
-})
 
 router.post('/transactions', async (req, res) => {
     const txhash = req.body.txhash;
@@ -431,10 +298,6 @@ function getTransactionType(input) {
     else if(substr.includes("0x9979ef"))
     {
         return "Bidding";
-    }
-    else if(substr.includes("0x5afa3a"))
-    {
-        return "Auction";
     }
     else
     {

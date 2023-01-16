@@ -107,7 +107,7 @@ function Home() {
                                         <MDBIcon icon="tag" size='3x' color='primary' />
                                     </div>
                                     <h6 className='text-center mt-3'>List them for sale</h6>
-                                    <p className='px-2 text-center'>Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs, and we help you sell them!</p>
+                                    <p className='px-2 text-center'>Choose between fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs, and we help you sell them!</p>
                                 </MDBCol>
 
                             </MDBRow>
