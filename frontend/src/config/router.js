@@ -14,7 +14,6 @@ import WatchlistPage from "../pages/watchlist";
 import Favorites from "../pages/favorites";
 import MyNft from "../pages/my_nfts";
 import ExploreCategory from "../pages/explore_category";
-import Stats from "../pages/stats";
 import AddToWhitelist from "../pages/add-to-whitelist";
 
 export default function MainRouter() {
@@ -40,7 +39,6 @@ export default function MainRouter() {
       <Route path="/watchlist" element={<WatchlistPage></WatchlistPage>} />
       <Route path="/favorites" element={<Favorites></Favorites>} />
       <Route path="/my_nfts" element={<MyNft></MyNft>} />
-      <Route path="/stats" element={<Stats></Stats>} />
       <Route path="/add-to-whitelist" element={<AddToWhitelist />} />
     </Routes>
   );

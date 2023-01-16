@@ -21,15 +21,6 @@ const search = async (search = 0, category, id = 0) => {
     return response.data;
 };
 
-const stats = async (page = 1, type) => {
-    let url = BASE_URL + `/explore?type=${type}`
-    
-    if(search != 0){
-        url += `&page=${page}`
-    }
-    const response = await axios.get(url, {}, headers);
-    return response.data;
-};
 const getTop = async(type) => {
     let url = api_config.BACKEND + `/top/`+type
     
@@ -39,7 +30,7 @@ const getTop = async(type) => {
     return response.data;
 }
 const utils = {
-    search,stats, getTop
+    search, getTop
 }
 
 export default utils;

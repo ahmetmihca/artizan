@@ -22,7 +22,6 @@ export type RootStackParamList = {
   ArtworkScreen: NavigatorScreenParams<RootTabParamList> | undefined;
   CategoryScreen: NavigatorScreenParams<RootTabParamList> | undefined;
   SettingsScreen: NavigatorScreenParams<RootTabParamList> | undefined;
-  StatsScreen: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
   CollectionScreen: NavigatorScreenParams<RootTabParamList> | undefined;
@@ -56,7 +55,6 @@ export type RootTabParamList = {
   ScreenPrototype: undefined;
   OtherUserProfileScreen: undefined;
   HomeScreen: undefined;
-  StatsScreen: undefined;
   SearchScreen: undefined;
   ProfileScreen: undefined;
   MoreScreen: undefined;

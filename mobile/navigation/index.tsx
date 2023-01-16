@@ -21,7 +21,6 @@ import CreateCollectionScreen from '../screens/CreateCollectionScreen';
 import ArtworkScreen from '../screens/ArtworkScreen';
 import OtherUserProfileScreen from '../screens/profile/OtherUserProfile';
 import LinkingConfiguration from './LinkingConfiguration';
-import ExploreScreen from '../screens/Stats';
 import SearchScreen from '../screens/SearchScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 import MoreScreen from '../screens/MoreScreen';
@@ -100,16 +99,6 @@ function BottomTabNavigator() {
           headerTitleAlign:'center',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}
-      />
-      <BottomTab.Screen
-        name="StatsScreen"
-        component={ExploreScreen}
-        options={{
-          headerShown:false,
-          title: 'Stats',
-          tabBarItemStyle:{paddingBottom: 5},
-          tabBarIcon: ({ color }) => <TabBarIcon name="wpexplorer" color={color} />,
-        }}
       />
       <BottomTab.Screen
         name="SearchScreen"

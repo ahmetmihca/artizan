@@ -8,7 +8,6 @@ import {
   MaterialCommunityIcons
 } from "@expo/vector-icons";
 import HomeStack from "./HomeStack";
-import StatsStack from "./StatsStack";
 import Search from "../screens/Search";
 import Profile from "./ProfileStack";
 import MoreStack from "./MoreStack";
@@ -61,16 +60,6 @@ const AppNavigator = () => {
           tabBarLabel: "Home",
           tabBarIcon: ({ color, size }) => (
             <Entypo name="home" size={size} color={color} />
-          )
-        }}
-      />
-      <Tab.Screen
-        name="StatsStack"
-        component={StatsStack}
-        options={{
-          title: "Stats",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="stats-chart" size={size} color={color} />
           )
         }}
       />

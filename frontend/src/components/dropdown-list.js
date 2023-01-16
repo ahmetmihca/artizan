@@ -4,7 +4,6 @@ import user_services from "../services/user_serv";
 var navBarObjects =
 {
     Explore: ['All NFTs', 'Art', 'Collectibles', 'Domain Names', "Music"],
-    Stats: ['Rankings', 'Activity'],
     Profile: [
         "Favorites", "Watchlist", "My Collections", "My NFTs", "Settings", "Logout"
     ]
