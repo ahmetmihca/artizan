@@ -42,9 +42,11 @@ router.post('/add-to-whitelist', async (req, res) => {
     const walletAddress = req.body.walletAddress;
     if (!username || !walletAddress) return console.log("Data is missing");
     try {
-      const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
+      //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
       console.log("WL WALLET ADD OPERATION")
-      await marketplaceContract.addToWhitelist(walletAddress,username);
+      await globalContract.methods.addToWhitelist(walletAddress, username).encodeABI();
+
+      //await marketplaceContract.addToWhitelist(walletAddress,username);
       //router.push("/searchPage");
     } catch (error) {
       console.log("Error while adding whitelisted wallet");
@@ -55,9 +57,9 @@ router.get('/contract-owner-check', async (req, res) => {
     
     const accountAddress = req.body.accountAddress;
     try {
-      const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
+      //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
       console.log("Contract Owner Check")
-      const ownerAddress= marketplaceContract.getOwner();
+      const ownerAddress= await globalContract.methods.getOwner().call();
       var isOwner;
       if (ownerAddress.toLowerCase() === accountAddress.toLowerCase()) {
         isOwner = true;
@@ -79,9 +81,9 @@ router.get('/whitelist-check', async (req, res) => {
     
     const accountAddress = req.body.accountAddress;
     try {
-        const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
+        //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
         console.log("Whitelist Check")
-        const isWhitelisted = await marketplaceContract.isWhitelisted(accountAddress);
+        const isWhitelisted = await globalContract.methods.isWhitelisted(accountAddress).encodeABI();
         console.log("isWhitelisted:"+isWhitelisted);
         res.send(isWhitelisted);
       } 
