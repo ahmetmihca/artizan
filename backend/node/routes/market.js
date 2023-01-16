@@ -32,10 +32,6 @@ const globalContract = new web3.eth.Contract(
   marketContractABI.abi,
   marketContractAddress
 );
-const auctionContract = new web3.eth.Contract(
-  auctionContractABI.abi,
-  ContractDetails.auctionContractAddress
-);
 
 function MarketItem(contract, token, cost, sold) {
   this.contract = contract;
@@ -296,6 +292,7 @@ router.get("/items", async (req, res) => {
         res.json(items);
         return;
     }
+});
 
 router.post("/transactions", async (req, res) => {
   const txhash = req.body.txhash;
