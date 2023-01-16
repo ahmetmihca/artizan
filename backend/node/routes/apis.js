@@ -4,7 +4,6 @@ const fs = require("fs");
 const util = require("util");
 const FormData = require("form-data");
 const Nft = require("../models/nft");
-const Auction = require("../contracts/Auction");
 
 require("dotenv").config();
 
@@ -41,20 +40,6 @@ let Market1155Helper = require("../contracts/Market1155");
 const User = require("../models/user");
 
 const router = express.Router();
-
-var log_file = fs.createWriteStream(__dirname + "/debug.log", { flags: "w" });
-
-function errlog(data) {
-    var datetime = new Date();
-    log_file.write(
-        datetime.toISOString().slice(0, 10) +
-        ":" +
-        Date.now() +
-        "\n" +
-        util.format(data) +
-        "\n\n"
-    );
-}
 
 async function getNftMetadataFromChain(tokenID) {
     let data = {}
@@ -234,7 +219,7 @@ router.get("/asset/:contract/:token", async (req, res) => {
             }
            
             p4 = axios({
-                url: `https://api-ropsten.etherscan.io/api?module=account&action=tokennfttx&contractaddress=${contractAddr}&page=1&offset=10000&startblock=0&endblock=latest&sort=asc&apikey=${process.env["ETHERSCAN_API_KEY"]}`,
+                url: `https://api-testnet.polygonscan.com/api?module=account&action=tokennfttx&contractaddress=${contractAddr}&page=1&offset=10000&startblock=0&endblock=latest&sort=asc&apikey=${process.env["ETHERSCAN_API_KEY"]}`,
                 method: "GET",
             });
 
@@ -339,31 +324,9 @@ router.get("/asset/:contract/:token", async (req, res) => {
             // This should have a price
             if (contractAddr.toLowerCase() == ContractDetails.nftContractAddress || ContractDetails.list1155contracts.includes(contractAddr))
             {
-                // On Auction
-                if (await Auction.isTokenOnAuction(contractAddr, tokenId)) {
-                    let auctionDetails = await Auction.getAuctionDetails(contractAddr, tokenId);
-
-                    console.log(auctionDetails);
-
-                    data.onBidding = true;
-                    data.auctionEnds = auctionDetails.endAt
-                    data.highestBid = auctionDetails.highestBid;
-
-                    let biddingDetails = await Auction.getAuctionBiddingDetails(contractAddr, tokenId);
-
-                    let bids = []
-                    biddingDetails.forEach((element) => {
-                        bids.push({
-                            "bidder": element.bidder,
-                            "value": element.bid
-                        })
-                    })
-
-                    data.bidHistory = bids
-                }
 
                 // On Sale
-                else if( contractAddr.toLowerCase() == ContractDetails.nftContractAddress) {
+                if( contractAddr.toLowerCase() == ContractDetails.nftContractAddress) {
                     let item = await MarketContract.methods.NFTItem(tokenId).call();
 
                     if (!item["sold"] && item["nftContract"] != "0x0000000000000000000000000000000000000000") {
@@ -646,6 +609,18 @@ router.get("/top/nft", async (req, res) => {
     res.send(sales);
 })
 
+// get all nfts
+router.get("/asset", async (req, res) => {
+    let cursor = Nft.find({})
+    let nfts = []
+
+    for await (const doc of cursor) {
+        delete doc._id
+        nfts.push(doc)
+    }
+
+    res.send(nfts);
+})
 
 // Top Collections / by total nft sale
 router.get("/top/collection", async (req, res) => {

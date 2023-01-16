@@ -112,16 +112,6 @@ function Navbar(props) {
             </MDBNavbarLink>
             <DropdownList dropdowntype="Explore"></DropdownList>
           </MDBNavbarItem>
-          <MDBNavbarItem className="dropdown">
-            <MDBNavbarLink
-              href="/stats"
-              aria-current="page"
-              className="dropbtn"
-            >
-              📈 Stats
-            </MDBNavbarLink>
-            <DropdownList dropdowntype="Stats"></DropdownList>
-          </MDBNavbarItem>
 
           <MDBNavbarItem className="dropdown">
             <MDBNavbarLink href="/my_nfts" aria-current="page">

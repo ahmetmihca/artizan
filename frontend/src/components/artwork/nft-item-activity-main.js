@@ -24,14 +24,6 @@ function ItemActivity(props)
                         </MDBTableHead>
                         <MDBTableBody className='item-activity__tbody'>
                             <tr>
-                                <td><MDBIcon far icon="hand-paper" /><span>
-                                    Bid</span></td>
-                                <td><MDBIcon fab icon="ethereum"  style={{color:"#A30774"} } /> <span>0,75</span></td>
-                                <td><a href="#">Sadigulbey</a></td>
-                                <td><a href="#">sadi</a></td>
-                                <td><span href="#972384">A day ago</span></td>
-                            </tr>
-                            <tr>
                                 <td><MDBIcon icon="tag" /><span>
                                     List</span></td>
                                 <td><MDBIcon fab icon="ethereum"  style={{color:"#A30774"} } /> <span>0,75</span></td>
@@ -55,14 +47,7 @@ function ItemActivity(props)
                                 <td><a href="#">sadi</a></td>
                                 <td><span href="#972384">A day ago</span></td>
                             </tr>
-                            <tr>
-                                <td><MDBIcon far icon="frown" /><span>
-                                    Bid Cancel</span></td>
-                                <td><MDBIcon fab icon="ethereum"  style={{color:"#A30774"} } /> <span>0,75</span></td>
-                                <td><a href="#">Sadigulbey</a></td>
-                                <td><a href="#">sadi</a></td>
-                                <td><span href="#972384">A day ago</span></td>
-                            </tr>
+
                             
                         </MDBTableBody>
                     </MDBTable>
