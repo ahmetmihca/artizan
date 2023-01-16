@@ -20,6 +20,7 @@ const onLoginHandler = async () => {
       localStorage.setItem("wallet", accounts[0].toLowerCase());
 
       let isWhitelisted = await trade_services.isWhitelisted(accounts[0]);
+
       localStorage.setItem("isWhitelisted", isWhitelisted);
       console.log("isWhitelisted:" + localStorage.getItem("isWhitelisted"));
 

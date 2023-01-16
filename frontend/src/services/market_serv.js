@@ -125,7 +125,7 @@ const addToWhitelist = async (username, walletAddress, auth) => {
 
 const isContractOwner = async (accountAddress, auth) => {
   headers["Authorization"] = `jwt ${auth}`;
-  const response = await axios.get(
+  const response = await axios.post(
     BASE_URL + `/contract-owner-check`,
     {
       accountAddress: accountAddress,
@@ -139,9 +139,10 @@ const isContractOwner = async (accountAddress, auth) => {
 };
 
 const isWhitelisted = async (accountAddress, auth) => {
+  console.log("front: accountAddress", accountAddress);
   headers["Authorization"] = `jwt ${auth}`;
 
-  const response = await axios.get(
+  const response = await axios.post(
     BASE_URL + `/whitelist-check`,
     {
       accountAddress: accountAddress,
@@ -163,7 +164,7 @@ const trade_services = {
   sendBidOffer,
   isWhitelisted,
   addToWhitelist,
-  isContractOwner
+  isContractOwner,
 };
 
 export default trade_services;
