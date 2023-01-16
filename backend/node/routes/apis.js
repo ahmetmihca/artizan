@@ -41,20 +41,6 @@ const User = require("../models/user");
 
 const router = express.Router();
 
-var log_file = fs.createWriteStream(__dirname + "/debug.log", { flags: "w" });
-
-function errlog(data) {
-    var datetime = new Date();
-    log_file.write(
-        datetime.toISOString().slice(0, 10) +
-        ":" +
-        Date.now() +
-        "\n" +
-        util.format(data) +
-        "\n\n"
-    );
-}
-
 async function getNftMetadataFromChain(tokenID) {
     let data = {}
     try {

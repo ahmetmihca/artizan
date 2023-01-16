@@ -453,27 +453,6 @@ function MyNft() {
                 </MDBTable>
               </MDBRow>
             </MDBTabsPane>
-
-            {/* TAB 3 ================================================================================ TAB 3 */}
-            <MDBTabsPane show={fillActive === "tab3"}>
-              <MDBRow>
-                <MDBTable>
-                  <MDBTableHead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Contract</th>
-                      <th scope="col">Token</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Highest Bid</th>
-                      <th scope="col">Time Left</th>
-
-                      {/* <th scope='col'>Description</th> */}
-                      {/* <th scope='col'>Update</th> */}
-                    </tr>
-                  </MDBTableHead>
-                </MDBTable>
-              </MDBRow>
-            </MDBTabsPane>
           </MDBTabsContent>
         </MDBCol>
       </MDBContainer>
@@ -508,17 +487,6 @@ function MyNft() {
 
               {sellingOption == "default" ? (
                 <MDBRow>
-                  <MDBCol>
-                    <MDBBtn
-                      className="w-100"
-                      onClick={() => {
-                        changeSelling("bid");
-                      }}
-                    >
-                      Create Bidding
-                    </MDBBtn>
-                  </MDBCol>
-
                   <MDBCol className="floatRight">
                     <MDBBtn
                       className="w-100"

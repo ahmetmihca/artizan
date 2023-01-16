@@ -6,7 +6,7 @@ import currency_service from '../../services/currency';
 import market_service from '../../services/market_serv';
 
 /** 
- * @param {{notSale: boolean, price: BigInteger, token: string, contract: string, isBidding: boolean, bidEnds: BigInt, highestBid: BigInt}} props 
+ * @param {{notSale: boolean, price: BigInteger, token: string, contract: string}} props 
  */
 function PriceCard(props) {
 
