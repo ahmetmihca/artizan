@@ -862,46 +862,6 @@
       "artifacts": [
         "ERC721Burnable"
       ]
-    },
-    "/Users/ugursezerasikoglu/Documents/artizane/contarcts/contracts/ArtizanAuction.sol": {
-      "lastModificationDate": 1673799789033,
-      "contentHash": "9224f61f64b60fd8be7888e2d3e700d8",
-      "sourceName": "contracts/ArtizanAuction.sol",
-      "solcConfig": {
-        "version": "0.8.1",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
-        "./ArtizanNFT.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.1"
-      ],
-      "artifacts": [
-        "ArtizanAuction"
-      ]
     }
   }
 }
