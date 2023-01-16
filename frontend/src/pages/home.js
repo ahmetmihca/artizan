@@ -69,7 +69,7 @@ function Home() {
             </MDBRow>
             <MDBContainer className="mh-10">
               <h3 className="text-center mh-10" style={{ color: "black" }}>
-                Top Collections
+                Memberships
               </h3>
               <MDBRow className="d-flex justify-content-center">
                 {isLoading ? (
