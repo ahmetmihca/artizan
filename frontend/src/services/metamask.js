@@ -20,9 +20,10 @@ const onLoginHandler = async () => {
       localStorage.setItem("wallet", accounts[0].toLowerCase());
 
       let isWhitelisted = await trade_services.isWhitelisted(accounts[0]);
+      let isContractOwner = await trade_services.isContractOwner(accounts[0]);
 
       localStorage.setItem("isWhitelisted", isWhitelisted);
-      console.log("isWhitelisted:" + localStorage.getItem("isWhitelisted"));
+      localStorage.setItem("isContractOwner", isContractOwner);
 
       walletConnected = true;
       return accounts[0];
@@ -45,19 +46,23 @@ function getWalletId() {
 function checkConnection() {
   metamask
     .request({ method: "eth_accounts" })
-    .then((e) => {
+    .then(async (e) => {
       if (e.length == 0) {
         walletConnected = false;
         localStorage.removeItem("wallet");
+
+        localStorage.removeItem("isWhitelisted");
+        localStorage.removeItem("isContractOwner");
       } else {
         walletConnected = true;
         if (localStorage.getItem("wallet") == null) {
           localStorage.setItem("wallet", e[0]);
-          console.log("hello1");
-          // // let isWhitelisted = await trade_services.isWhitelisted(accounts[0]);
-          // let isWhitelisted = false;
-          // localStorage.setItem("isWhitelisted", isWhitelisted);
-          // console.log("isWhitelisted:" + isWhitelisted);
+
+          let isWhitelisted = await trade_services.isWhitelisted(e[0]);
+          let isContractOwner = await trade_services.isContractOwner(e[0]);
+
+          localStorage.setItem("isWhitelisted", isWhitelisted);
+          localStorage.setItem("isContractOwner", isContractOwner);
         }
       }
     })

@@ -7,7 +7,7 @@ GO_DIR=$PROJECT_DIR/backend/go/cmd/micros
 
 #npm install -g pm2
 cd $BACKEND_DIR && npm install
-cd $FRONTEND_DIR && yarn install
+# cd $FRONTEND_DIR && yarn install
 
 cd $GO_DIR
 pm2 start go -- run .
@@ -16,4 +16,4 @@ cd $BACKEND_DIR
 pm2 start index.js
 
 cd $FRONTEND_DIR
-pm2 start yarn -- start
+# pm2 start yarn -- start
