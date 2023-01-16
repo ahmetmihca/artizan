@@ -78,11 +78,11 @@ function MyCollection() {
                                             <input hidden='true' value={collection._id}></input>
 
                                             <select name='collection'>
-                                                <option>Art</option>
-                                                <option>Sport</option>
-                                                <option>Collectible</option>
-                                                <option>Gif</option>
-                                                <option>Photography</option>
+                                                <option>Netflix</option>
+                                                <option>Youtube</option>
+                                                <option>Amazon Prime</option>
+                                                <option>BluTV</option>
+                                                <option>Disney+</option>
                                             </select>
 
                                             <MDBBtn color='success'>Update</MDBBtn>

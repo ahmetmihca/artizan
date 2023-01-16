@@ -1,11 +1,13 @@
 import {
     MDBContainer, MDBRow, MDBCol, MDBBtn
 } from 'mdb-react-ui-kit';
-import ProductCard from "../components/productCard";
 
 import { useEffect, useState } from 'react';
-import CollectionServices from "../services/collection_serv"
-import CollectionCard from "../components/collectionCard";
+import AssetServices from "../services/asset_serv"
+import ProductCard from "../components/productCard";
+import AssertURL from "../helpers/asset_url"
+
+
 
 
 function Explore(props)
@@ -15,7 +17,7 @@ function Explore(props)
 
     useEffect(()=> {
         const fetchCollections = async () => {
-            const result = await CollectionServices.get_collections();
+            const result = await AssetServices.get_all_assets();
             setItems(result)
             setIsLoading(false)
             return result;
@@ -39,12 +41,11 @@ function Explore(props)
                                name={item.name}
                                 id='1'
                             /> */}
-                            <CollectionCard 
-                                img={'http://localhost:3001/public/collections/' + item._id + "_banner.png" }
-                                avatar={'http://localhost:3001/public/collections/' + item._id + "_logo.png" }
-                                name={item.name}
-                                id={item._id}
-                                description={item.description}
+                            <ProductCard 
+                                img= {AssertURL.convert_img(item.metadata.imgURL)}
+                                name={item.metadata.name}
+                                address={item.contract}
+                                token={item.tokenID}
                             />
 
                         </MDBCol>

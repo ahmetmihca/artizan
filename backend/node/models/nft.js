@@ -16,6 +16,6 @@ const nftSchema = new Schema({
     category: String,
     creator: String
 })
-
-const Nft = mongoose.model('Nft', nftSchema);
+// 
+const Nft = mongoose.model('Nft', nftSchema, collection='nfts');
 module.exports = Nft;

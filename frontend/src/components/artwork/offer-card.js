@@ -29,20 +29,7 @@ function OfferCard(props) {
                                 <th>From</th>
                             </tr>
                         </MDBTableHead>
-                        <MDBTableBody id="ocard--body__tbody">
 
-                            {props.offers ? props.offers.map((element, i) => {
-                                return (
-                                    <tr>
-                                        <td><MDBIcon fab icon="ethereum" style={{ color: "#A30774" }} /> <span>{element.value / 1e18} WETH</span></td>
-                                        {/* <td><span>60% below</span></td>
-                                        <td><span>about 2 hours</span></td> */}
-                                        <td>{element.bidder}</td>
-                                    </tr>
-                                )
-                            })
-                                : ''}
-                        </MDBTableBody>
                     </MDBTable>
                 </MDBCardBody>
 

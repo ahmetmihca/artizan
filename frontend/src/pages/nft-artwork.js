@@ -82,14 +82,8 @@ function Artwork() {
 
                             </div>
 
-                            {items.price ? <PriceCard isBidding={false} notSale={false} price={items.price} token={id} contract={contract}></PriceCard> : ''}
-                            {items.onBidding == true ?
-                                <main>
-                                    <PriceCard token={id} isBidding={true} bidEnds={items.auctionEnds} highestBid={items.highestBid / 1e18}></PriceCard>
-                                    <OfferCard offers={items.bidHistory.reverse()}></OfferCard>
-                                </main>
-                                : ''}
-                            {!items.onBidding && items.price == null ? <PriceCard isBidding={false} notSale={true}></PriceCard> : ''}
+                            {items.price ? <PriceCard notSale={false} price={items.price} token={id} contract={contract}></PriceCard> : ''}
+                            {items.price == null ? <PriceCard notSale={true}></PriceCard> : ''}
 
                             <ItemActivity table={items.activity}></ItemActivity>
 
