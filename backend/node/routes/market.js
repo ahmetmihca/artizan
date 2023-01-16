@@ -50,8 +50,6 @@ router.post("/add-to-whitelist", auth, async (req, res) => {
     //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
     console.log("WL WALLET ADD OPERATION");
     console.log("addressToAdd", addressToAdd);
-    console.log("callerAddress:", callerAddress);
-
     const transaction = await globalContract.methods
       .addToWhitelist(
         addressToAdd.toLocaleLowerCase(),
@@ -138,7 +136,7 @@ function isHex(num) {
 }
 
 router.post("/sell", auth, async (req, res) => {
-  const { contract, tokenID, price } = req.body;
+  const { contract, tokenID, price, company, duration } = req.body;
   console.log(tokenID);
 
   let nft = await Nft.findOne({
@@ -172,8 +170,10 @@ router.post("/sell", auth, async (req, res) => {
     transaction = await nftContract.methods
       .createMarketItem(
         web3.utils.toWei(price, "ether"),
+        tokenInt,
+        duration * 60 * 60 * 24,
         nftContractAddress,
-        tokenInt
+        company
       )
       .encodeABI();
   }
@@ -326,6 +326,22 @@ router.post("/transactions", async (req, res) => {
   data.type = getTransactionType(result.data.result.input);
 
   res.send(data);
+});
+
+router.post("/verify", async (req, res) => {
+  const { company, address } = req.body;
+
+  let verifyContract = await globalContract.methods.verify(company).encodeABI();
+
+  const transactionParameters = {
+    to: marketContractAddress, // Required except during contract publications.
+    from: address, // must match user's active address.
+    data: verifyContract,
+  };
+
+  res.json(transactionParameters);
+
+  return;
 });
 
 function getTransactionType(input) {

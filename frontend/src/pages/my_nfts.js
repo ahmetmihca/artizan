@@ -178,6 +178,8 @@ function MyNft() {
       contract,
       tokenID,
       price,
+      duration,
+      company,
       Cookies.get("token")
     );
 
