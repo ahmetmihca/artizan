@@ -609,6 +609,18 @@ router.get("/top/nft", async (req, res) => {
     res.send(sales);
 })
 
+// get all nfts
+router.get("/asset", async (req, res) => {
+    let cursor = Nft.find({})
+    let nfts = []
+
+    for await (const doc of cursor) {
+        delete doc._id
+        nfts.push(doc)
+    }
+
+    res.send(nfts);
+})
 
 // Top Collections / by total nft sale
 router.get("/top/collection", async (req, res) => {

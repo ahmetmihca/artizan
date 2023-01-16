@@ -113,28 +113,6 @@ function Home() {
                             </MDBRow>
                         </MDBContainer>
 
-                        <MDBContainer className='mt-5'>
-                            <h3 className='text-center  mh-10' style={{ color: "black" }}>Browse by category</h3>
-                            <MDBRow className='d-flex justify-content-center mt-5'>
-                                <MDBCol className='d-flex justify-content-center' onClick={() => { window.location = "/explore/art" }}>
-                                    <CategoryCard img="https://www.pictureframesexpress.co.uk/blog/wp-content/uploads/2020/05/7-Tips-to-Finding-Art-Inspiration-Header-1024x649.jpg" name="Art"></CategoryCard>
-                                </MDBCol>
-                                <MDBCol className='d-flex justify-content-center' onClick={() => { window.location = "/explore/collectibles" }}  >
-                                    <CategoryCard img="https://s32678.pcdn.co/wp-content/uploads/2022/01/nft-free.jpg" name="Collectibles"></CategoryCard>
-                                </MDBCol>
-                                <MDBCol className='d-flex justify-content-center' onClick={() => { window.location = "/explore/gif" }}>
-                                    <CategoryCard img="https://img-s1.onedio.com/id-623c2bc6946ff15116e75466/rev-0/w-600/h-352/f-gif/s-2afe635e7566a33ee208e48cf11c9b2a53c57681.gif" name="Gifs" ></CategoryCard>
-                                </MDBCol>
-                            </MDBRow>
-                            <MDBRow className='d-flex justify-content-center mt-5'>
-                                <MDBCol className='d-flex justify-content-center' onClick={() => { window.location = "/explore/photography" }} >
-                                    <CategoryCard img="https://static.dw.com/image/59176388_101.jpg" name="Photography"></CategoryCard>
-                                </MDBCol>
-                                <MDBCol className='d-flex justify-content-center' onClick={() => { window.location = "/explore/sports" }}>
-                                    <CategoryCard img="https://www.cliftonhillphysiotherapy.com.au/wp-content/uploads/2020/06/sport.jpg" name="Sports"></CategoryCard>
-                                </MDBCol>
-                            </MDBRow>
-                        </MDBContainer>
                         <MDBContainer>
                             <MDBRow className=' justify-content-center mt-5 mh-10'>
                                 <MDBBtn onClick={() => { window.location = '/explore' }} style={{ width: "25vw", marginTop: "5em", marginBottom: "5em", height: "50px" }}>Explore the marketplace</MDBBtn>

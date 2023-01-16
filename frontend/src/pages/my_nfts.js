@@ -149,7 +149,7 @@ function MyNft() {
 
   let handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(event)
     let token = event.target[0].value;
     let contract = event.target[1].value;
     let collection_id = event.target[2].value;
@@ -310,7 +310,7 @@ function MyNft() {
                                 </a>
                               </th>
                               <td>{nft.asset.name}</td>
-                              <td>{nft.contract}</td>
+                              <td>{nft.contract.slice(0, 3) + "..." + nft.contract.slice(10)}</td>
                               {/* <td>{nft.asset.description}</td> */}
                               <td>
                                 <form onSubmit={handleSubmit}>
@@ -320,11 +320,7 @@ function MyNft() {
                                   ></input>
                                   <input
                                     hidden="true"
-                                    value={
-                                      nft.contract.slice(0, 3) +
-                                      "..." +
-                                      nft.contract.slice(10)
-                                    }
+                                    value={nft.contract}
                                   ></input>
 
                                   <span style={{ display: "-webkit-box" }}>
@@ -332,7 +328,7 @@ function MyNft() {
                                       className="form-select w-50"
                                       name="collection"
                                     >
-                                      <option>Collection</option>
+                                      <option disabled>Collection</option>
 
                                       {collections.map((c, i) => {
                                         return (

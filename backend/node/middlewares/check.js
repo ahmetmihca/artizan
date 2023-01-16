@@ -23,7 +23,7 @@ async function checkNFTOwnership(owner, contractID, tokenID) {
     try {
         let config = {
             method: "get",
-            url: `https://eth-ropsten.g.alchemy.com/v2/${process.env['ALCHEMY_API_KEY']}/getOwnersForToken?contractAddress=${contractID}&tokenId=${tokenID}`,
+            url: `https://polygon-mumbai.g.alchemy.com/v2/INNPd6POphSUZc_xuHJc0FVzZNpRWwcj/getOwnersForToken?contractAddress=${contractID}&tokenId=${tokenID}`,
             headers: {}
         }
         let resp = await axios.request(config)
