@@ -95,7 +95,7 @@ function CreateArt() {
   return (
     <div>
       <form action="" id="create-nft__form" onSubmit={handleSubmit}>
-        <h1>Create new item</h1>
+        <h1>Create New Membership NFT</h1>
         <h4>Image, Video, Audio, or 3D Model</h4>
         <p>File types supported: JPG, PNG, MP4, GIF. Max Size: 40MB</p>
 
