@@ -21,20 +21,31 @@ import login_services from "../services/login_serv";
 
 function Navbar(props) {
   const [walletConnected, setWalletConneted] = useState(false);
+  const [isWhitelisted, setIsWhitelisted] = useState("");
+  const [isContractOwner, setIsContractOwner] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
     metamask_operations.checkConnection();
     console.log(metamask_operations.walletConnected);
 
+    setIsWhitelisted(localStorage.getItem("isWhitelisted"));
+    setIsContractOwner(localStorage.getItem("isContractOwner"));
+
+    console.log("isContractOwner from useEffect", isContractOwner);
+    console.log("isWhitelisted from useEffect", isWhitelisted);
+
     setInterval(() => {
       if (metamask_operations.checkWallet()) {
         setWalletConneted(true);
       } else {
         setWalletConneted(false);
+        // setIsWhitelisted("");
+        // localStorage.setItem("isWhitelisted", "false");
       }
     }, 500);
-  }, []);
+  }, [isWhitelisted, isContractOwner]);
 
   async function searchHandler(event) {
     event.preventDefault();
@@ -83,11 +94,13 @@ function Navbar(props) {
         </form>
 
         <MDBNavbarNav className="justify-content-end mx-5 my-1">
-          <MDBNavbarItem className="dropdown">
-            <MDBNavbarLink href="/add-to-whitelist" aria-current="page">
-              Add to whitelist
-            </MDBNavbarLink>
-          </MDBNavbarItem>
+          {walletConnected & (isContractOwner == "true") ? (
+            <MDBNavbarItem className="dropdown">
+              <MDBNavbarLink href="/add-to-whitelist" aria-current="page">
+                Add to whitelist
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+          ) : null}
 
           <MDBNavbarItem className="dropdown">
             <MDBNavbarLink
@@ -116,11 +129,14 @@ function Navbar(props) {
             </MDBNavbarLink>
           </MDBNavbarItem>
 
-          <MDBNavbarItem>
-            <MDBNavbarLink href="/create" aria-current="page">
-              📐 Create
-            </MDBNavbarLink>
-          </MDBNavbarItem>
+          {walletConnected & (isWhitelisted === "true") ? (
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/create" aria-current="page">
+                📐 Create
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+          ) : null}
+
           <MDBNavbarItem className="dropdown">
             <MDBNavbarLink onClick={ProfileHandler} aria-current="page">
               <MDBIcon far icon="user-circle" size="lg" />
