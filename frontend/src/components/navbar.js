@@ -72,17 +72,6 @@ function Navbar(props) {
           Artizan
         </MDBNavbarBrand>
         <form className="input-group ms-4" onSubmit={searchHandler}>
-          <select
-            style={{ maxWidth: 160, textAlign: "center" }}
-            className="form-control-custom"
-            name="category"
-            id="category"
-          >
-            <option value="collection">Collections 📚 </option>
-            <option value="user">Users 🤠 </option>
-            <option value="asset">Assets 🧿 </option>
-          </select>
-
           <input
             type="search"
             className="form-control-custom px-2 search-bar"
@@ -97,7 +86,8 @@ function Navbar(props) {
           {walletConnected & (isContractOwner == "true") ? (
             <MDBNavbarItem className="dropdown">
               <MDBNavbarLink href="/add-to-whitelist" aria-current="page">
-                Add to whitelist
+                <MDBIcon icon="check" size="lg" />
+                <span> Whitelist Companies</span>
               </MDBNavbarLink>
             </MDBNavbarItem>
           ) : null}
@@ -108,7 +98,7 @@ function Navbar(props) {
               aria-current="page"
               className="dropbtn"
             >
-              🔎 Explore
+              🔎 Explore Collections
             </MDBNavbarLink>
             <DropdownList dropdowntype="Explore"></DropdownList>
           </MDBNavbarItem>

@@ -6,14 +6,15 @@ const auth = require("../middlewares/auth");
 const Nft = require("../models/nft");
 const { ethers, ContractFactory } = require("ethers");
 
-const alchemyAPIUrl = process.env["ALCHEMY_API_URL"]
-
+const alchemyAPIUrl = process.env["ALCHEMY_API_URL"];
 
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
-const marketContractABI = require('../contracts/ArtizanMarket.json')
-const nftContractAddress = "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
-const marketContractAddress = "0xF92acb3Fdb26ca19aA955feaCD2996f4AaB27b23".toLocaleLowerCase();
+const marketContractABI = require("../contracts/ArtizanMarket.json");
+const nftContractAddress =
+  "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
+const marketContractAddress =
+  "0xF92acb3Fdb26ca19aA955feaCD2996f4AaB27b23".toLocaleLowerCase();
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
@@ -23,10 +24,7 @@ const web3 = createAlchemyWeb3(
 const ContractDetails = require("../contracts/ContractDetails");
 const Market1155Helper = require("../contracts/Market1155");
 
-
-const router = express.Router()
-
-
+const router = express.Router();
 
 const globalContract = new web3.eth.Contract(
   marketContractABI.abi,
@@ -47,9 +45,8 @@ router.post("/add-to-whitelist", async (req, res) => {
   try {
     //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
     console.log("WL WALLET ADD OPERATION");
-    await globalContract.methods
-      .addToWhitelist(walletAddress, username)
-      .encodeABI();
+    console.log("walletAddress", walletAddress);
+    await globalContract.methods.addToWhitelist(walletAddress, username).call();
 
     //await marketplaceContract.addToWhitelist(walletAddress,username);
     //router.push("/searchPage");
@@ -64,6 +61,7 @@ router.post("/contract-owner-check", async (req, res) => {
     //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
     console.log("Contract Owner Check");
     const ownerAddress = await globalContract.methods.getOwner().call();
+    console.log("ownerAddress from market.js: ", ownerAddress);
     var isOwner;
     if (ownerAddress.toLowerCase() === accountAddress.toLowerCase()) {
       isOwner = true;
@@ -136,7 +134,6 @@ router.post("/sell", auth, async (req, res) => {
     res.json({ status: "not found" });
     return;
   }
-
 
   let tokenInt;
   if (isHex(tokenID)) {
@@ -248,51 +245,53 @@ router.post("/stopSale", auth, async (req, res) => {
 });
 
 router.get("/items", async (req, res) => {
-    if (req.query['user'] != null) {
-        try {
-            // let addr = req.query['user'].substring(2);
-            let addr = req.query['user'];
+  if (req.query["user"] != null) {
+    try {
+      // let addr = req.query['user'].substring(2);
+      let addr = req.query["user"];
 
-            if (!web3.utils.isAddress(addr)) {
-                res.status(404);
-                return;
-            }
-
-            // This function should be changed 
-            let nfts = await web3.alchemy.getNfts({
-                contractAddress: ContractDetails.nftContractAddress,
-                owner: ContractDetails.marketContractAddress,
-            });
-
-            console.log({"NFTS":nfts})
-
-            let items = nfts.ownedNfts.filter((x) => x.metadata && x.metadata.creator.toLowerCase() == req.query['user'].toLowerCase());
-            let resp = []
-
-            items.forEach(element => {
-                resp.push({
-                    "contract": element.contract.address,
-                    "token": element.id.tokenId,
-                })
-            });
-
-            // let items = await globalContract.methods.ListUsersAllItems(addr.toLocaleLowerCase()).call();
-            // items = ParseMarketItem(items).filter((x) => x.sold != true && x.tokenID != 0);
-            res.json(resp); 
-            return;
-        }
-        catch (err) {
-            console.log(err)
-
-            res.status(404)
-            return;
-        }
-    }
-    else {
-        const items = await globalContract.methods.ListItemsOnSale().call();
-        res.json(items);
+      if (!web3.utils.isAddress(addr)) {
+        res.status(404);
         return;
+      }
+
+      // This function should be changed
+      let nfts = await web3.alchemy.getNfts({
+        contractAddress: ContractDetails.nftContractAddress,
+        owner: ContractDetails.marketContractAddress,
+      });
+
+      console.log({ NFTS: nfts });
+
+      let items = nfts.ownedNfts.filter(
+        (x) =>
+          x.metadata &&
+          x.metadata.creator.toLowerCase() == req.query["user"].toLowerCase()
+      );
+      let resp = [];
+
+      items.forEach((element) => {
+        resp.push({
+          contract: element.contract.address,
+          token: element.id.tokenId,
+        });
+      });
+
+      // let items = await globalContract.methods.ListUsersAllItems(addr.toLocaleLowerCase()).call();
+      // items = ParseMarketItem(items).filter((x) => x.sold != true && x.tokenID != 0);
+      res.json(resp);
+      return;
+    } catch (err) {
+      console.log(err);
+
+      res.status(404);
+      return;
     }
+  } else {
+    const items = await globalContract.methods.ListItemsOnSale().call();
+    res.json(items);
+    return;
+  }
 });
 
 router.post("/transactions", async (req, res) => {
@@ -314,20 +313,16 @@ router.post("/transactions", async (req, res) => {
 });
 
 function getTransactionType(input) {
-    const substr = input.substring(0, 10);
-    if (substr.includes('0xc23b139e')) {
-        return "Sale";
-    }
-    else if (substr.includes('0xfb37e88')) {
-        return "Mint";
-    }
-    else if (substr.includes('0x829950')) {
-        return "Listing"
-    }
-    else
-    {
-        return "Transfer";
-    }
+  const substr = input.substring(0, 10);
+  if (substr.includes("0xc23b139e")) {
+    return "Sale";
+  } else if (substr.includes("0xfb37e88")) {
+    return "Mint";
+  } else if (substr.includes("0x829950")) {
+    return "Listing";
+  } else {
+    return "Transfer";
+  }
 }
 
 module.exports = router;
