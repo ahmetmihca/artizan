@@ -314,6 +314,26 @@ router.post("/transactions", async (req, res) => {
   res.send(data);
 });
 
+
+router.post("/verify", async (req, res) => {
+  const { company, address } = req.body;
+  
+  let verifyContract = await globalContract.methods
+    .verify(company)
+    .encodeABI();
+
+  const transactionParameters = {
+    to: marketContractAddress, // Required except during contract publications.
+    from: address, // must match user's active address.
+    data: verifyContract,
+  };
+
+  res.json(transactionParameters);
+
+  return;
+
+});
+
 function getTransactionType(input) {
   const substr = input.substring(0, 10);
   if (substr.includes("0xc23b139e")) {
