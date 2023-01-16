@@ -10,7 +10,7 @@ cd $BACKEND_DIR && npm install
 cd $FRONTEND_DIR && yarn install
 
 cd $GO_DIR
-pm2 start go -- run .
+pm2p start go -- run .
 
 cd $BACKEND_DIR
 pm2 start index.js

@@ -86,7 +86,7 @@ checkMarket(nftID).then(function(check){
 
 
 const provider2= new ethers.getDefaultProvider("ropsten");
-const PRIVATE_KEY2= "a009fdeed6048bf3edaa253c4da3a50deb10ab2ad27639005b9dd80e14a2c906";
+const PRIVATE_KEY2= "53b959d75748e2e540c6ae467c7fd75ed74c91590b2b01e77906b4706f1b7458";
 const wallet2 = new ethers.Wallet(PRIVATE_KEY2, provider2);
 
 async function BuyNFT(wallet,nftID,price) {

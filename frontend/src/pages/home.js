@@ -42,8 +42,8 @@ function Home() {
                         <MDBRow className='home--banner'>
                             <MDBCol className="col-6">
                                 <MDBRow>
-                                    <h1>Discover, collect, and sell extraordinary NFTs</h1>
-                                    <h3 className='w-50 mt-2'>Artizan is the best NFT marketplace for you.</h3>
+                                    <h1>NFT Marketplace for Memberships </h1>
+                                    <h3 className='w-50 mt-2'>Unlock exclusive access with Artizan, the ultimate bridge connecting companies and their loyal members.</h3>
 
                                 </MDBRow>
                                 <MDBRow className='mt-5'>

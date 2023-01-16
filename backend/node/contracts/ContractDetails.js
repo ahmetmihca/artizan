@@ -1,7 +1,7 @@
 const nftContractAddress =
   "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
 const marketContractAddress =
-  "0x7FC6699304CECF687ce559A779221D9fdD5F807A".toLocaleLowerCase();
+  "0xF92acb3Fdb26ca19aA955feaCD2996f4AaB27b23".toLocaleLowerCase();
 const auctionContractAddress =
   "0x698D0D04229444E061604B533DD264E47BFEa0ff".toLocaleLowerCase();
 
