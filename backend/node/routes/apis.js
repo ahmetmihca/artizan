@@ -219,7 +219,7 @@ router.get("/asset/:contract/:token", async (req, res) => {
             }
            
             p4 = axios({
-                url: `https://api-ropsten.etherscan.io/api?module=account&action=tokennfttx&contractaddress=${contractAddr}&page=1&offset=10000&startblock=0&endblock=latest&sort=asc&apikey=${process.env["ETHERSCAN_API_KEY"]}`,
+                url: `https://api-testnet.polygonscan.com/api?module=account&action=tokennfttx&contractaddress=${contractAddr}&page=1&offset=10000&startblock=0&endblock=latest&sort=asc&apikey=${process.env["ETHERSCAN_API_KEY"]}`,
                 method: "GET",
             });
 
