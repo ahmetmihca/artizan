@@ -59,7 +59,7 @@ router.get('/contract-owner-check', async (req, res) => {
     try {
       //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
       console.log("Contract Owner Check")
-      const ownerAddress= await globalContract.methods.getOwner();
+      const ownerAddress= await globalContract.methods.getOwner().call();
       var isOwner;
       if (ownerAddress.toLowerCase() === accountAddress.toLowerCase()) {
         isOwner = true;
@@ -83,7 +83,7 @@ router.get('/whitelist-check', async (req, res) => {
     try {
         //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
         console.log("Whitelist Check")
-        const isWhitelisted = await globalContract.methods.isWhitelisted(accountAddress);
+        const isWhitelisted = await globalContract.methods.isWhitelisted(accountAddress).encodeABI();
         console.log("isWhitelisted:"+isWhitelisted);
         res.send(isWhitelisted);
       } 
