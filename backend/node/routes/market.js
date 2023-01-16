@@ -122,7 +122,7 @@ function isHex(num) {
 }
 
 router.post("/sell", auth, async (req, res) => {
-  const { contract, tokenID, price } = req.body;
+  const { contract, tokenID, price, company, duration } = req.body;
   console.log(tokenID);
 
   let nft = await Nft.findOne({
@@ -156,8 +156,10 @@ router.post("/sell", auth, async (req, res) => {
     transaction = await nftContract.methods
       .createMarketItem(
         web3.utils.toWei(price, "ether"),
+        tokenInt,
+        duration*60*60*24,
         nftContractAddress,
-        tokenInt
+        company
       )
       .encodeABI();
   }
