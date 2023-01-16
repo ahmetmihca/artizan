@@ -70,16 +70,15 @@ const getMarketItems = async (user = null) => {
   return response.data;
 };
 
-
-
-const addToWhitelist = async (username, walletAddress, auth) => {
+const addToWhitelist = async (addressToAdd, callerAddress, username, auth) => {
   headers["Authorization"] = `jwt ${auth}`;
 
   const response = await axios.post(
     BASE_URL + `/add-to-whitelist`,
     {
+      addressToAdd: addressToAdd,
+      callerAddress: callerAddress,
       username: username,
-      walletAddress: walletAddress,
     },
     { headers: headers }
   );

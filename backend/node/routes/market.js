@@ -39,16 +39,22 @@ function MarketItem(contract, token, cost, sold) {
 }
 
 router.post("/add-to-whitelist", async (req, res) => {
+  const addressToAdd = req.body.addressToAdd;
+  const callerAddress = req.body.callerAddress;
   const username = req.body.username;
-  const walletAddress = req.body.walletAddress;
-  if (!username || !walletAddress) return console.log("Data is missing");
+
+  console.log("req.body:", req.body);
+  if (!username || !addressToAdd || !callerAddress)
+    return console.log("Data is missing");
   try {
     //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
     console.log("WL WALLET ADD OPERATION");
-    console.log("walletAddress", walletAddress);
-    await globalContract.methods.addToWhitelist(walletAddress, username).call();
+    console.log("addressToAdd", addressToAdd);
+    await globalContract.methods
+      .addToWhitelist(addressToAdd, callerAddress, username)
+      .call();
 
-    //await marketplaceContract.addToWhitelist(walletAddress,username);
+    //await marketplaceContract.addToWhitelist(addressToAdd,username);
     //router.push("/searchPage");
   } catch (error) {
     console.log("Error while adding whitelisted wallet");
