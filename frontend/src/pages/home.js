@@ -40,10 +40,11 @@ function Home() {
             <MDBRow className="home--banner">
               <MDBCol className="col-6">
                 <MDBRow>
-                  <h1>NFT Marketplace for Memberships </h1>
+                  <h1>An NFT Marketplace for Memberships </h1>
                   <h3 className="w-50 mt-2">
-                    Unlock exclusive access with Artizan, the ultimate bridge
-                    connecting companies and their loyal members.
+                    Unlock exclusive access with Artizan, the 
+                    ultimate bridge connecting companies, and 
+                    their loyal members.
                   </h3>
                 </MDBRow>
                 <MDBRow className="mt-5">
@@ -98,7 +99,7 @@ function Home() {
             </MDBContainer>
             <MDBContainer>
               <h3 className="text-center mh-10" style={{ color: "black" }}>
-                Create and sell your NFTs
+                An NFT Marketplace For Memberships
               </h3>
               <MDBRow className="d-flex justify-content-center">
                 <MDBCol>
@@ -112,41 +113,35 @@ function Home() {
                   </div>
                   <h6 className="text-center mt-3">Set up your wallet</h6>
                   <p className="px-2 text-center">
-                    Once you’ve set up your wallet of choice, connect it to
-                    Artizan by clicking the wallet icon in the top right corner.
+                    You can set up your wallet by clicking the Wallet 
+                    button in the top right.
                   </p>
                 </MDBCol>
                 <MDBCol>
                   <div className="text-center mt-5">
-                    <MDBIcon icon="palette" size="3x" color="primary" />
+                    <MDBIcon icon="search" size="3x" color="primary" />
                   </div>
-                  <h6 className="text-center mt-3">Create your collection</h6>
+                  <h6 className="text-center mt-3">Search Memberships</h6>
                   <p className="px-2 text-center">
-                    Click My Collections and set up your collection. Add social
-                    links, a description, profile and banner images, and set a
-                    secondary sales fee.
+                    You can see your favorite membership subscriptions.
                   </p>
                 </MDBCol>
                 <MDBCol>
                   <div className="text-center mt-5">
-                    <MDBIcon far icon="image" size="3x" color="primary" />
+                    <MDBIcon icon="shopping-cart" size="3x" color="primary" />
                   </div>
-                  <h6 className="text-center mt-3">Add your NFTs</h6>
+                  <h6 className="text-center mt-3">Buy Memberships</h6>
                   <p className="px-2 text-center">
-                    Upload your work (image, video, audio, or 3D art), add a
-                    title and description, and customize your NFTs with
-                    properties, stats, and unlockable content.
+                    You can buy your favorite memberships with blockchain technology.
                   </p>
                 </MDBCol>
                 <MDBCol>
                   <div className="text-center mt-5">
-                    <MDBIcon icon="tag" size="3x" color="primary" />
+                    <MDBIcon icon="eye" size="3x" color="primary" />
                   </div>
-                  <h6 className="text-center mt-3">List them for sale</h6>
+                  <h6 className="text-center mt-3">See Memberships</h6>
                   <p className="px-2 text-center">
-                    Choose between fixed-price listings, and declining-price
-                    listings. You choose how you want to sell your NFTs, and we
-                    help you sell them!
+                    You can see your memberships.
                   </p>
                 </MDBCol>
               </MDBRow>
