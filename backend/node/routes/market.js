@@ -38,7 +38,7 @@ function MarketItem(contract, token, cost, sold) {
   this.sold = sold;
 }
 
-router.post("/add-to-whitelist", async (req, res) => {
+router.post("/add-to-whitelist", auth, async (req, res) => {
   const addressToAdd = req.body.addressToAdd;
   const callerAddress = req.body.callerAddress;
   const username = req.body.username;
@@ -50,12 +50,23 @@ router.post("/add-to-whitelist", async (req, res) => {
     //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);
     console.log("WL WALLET ADD OPERATION");
     console.log("addressToAdd", addressToAdd);
-    await globalContract.methods
-      .addToWhitelist(addressToAdd, callerAddress, username)
-      .call();
+    console.log("callerAddress:", callerAddress);
 
-    //await marketplaceContract.addToWhitelist(addressToAdd,username);
-    //router.push("/searchPage");
+    const transaction = await globalContract.methods
+      .addToWhitelist(
+        addressToAdd.toLocaleLowerCase(),
+        callerAddress.toLocaleLowerCase(),
+        username
+      )
+      .encodeABI(); //make call to NFT contract
+
+    const transactionParameters = {
+      to: marketContractAddress, // Required except during contract publications.
+      from: callerAddress, // must match user's active address.
+      data: transaction, // Optional, but used for defining smart contract creation and interaction.
+    };
+
+    res.json(transactionParameters);
   } catch (error) {
     console.log("Error while adding whitelisted wallet");
     console.log(error);
@@ -85,7 +96,6 @@ router.post("/contract-owner-check", async (req, res) => {
 });
 router.post("/whitelist-check", async (req, res) => {
   const accountAddress = req.body.accountAddress;
-  console.log("req:", req);
   console.log("req.body:", req.body);
   try {
     //const marketplaceContract = new web3.eth.Contract(marketContractABI.abi, marketContractAddress);

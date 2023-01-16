@@ -124,7 +124,7 @@ function MyNft() {
         localStorage.getItem("wallet")
       );
 
-      console.log({nfts})
+      console.log({ nfts });
       await Promise.all(
         nfts.map(async (element) => {
           let asset = await asset_services.get_asset(
@@ -138,7 +138,7 @@ function MyNft() {
             contract: element.contract,
             price: element.cost,
           };
-          console.log({a, onsale_nfts})
+          console.log({ a, onsale_nfts });
           setOnSale((onsale_nfts) => [...onsale_nfts, a]);
         })
       );
@@ -149,7 +149,7 @@ function MyNft() {
 
   let handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event)
+    console.log(event);
     let token = event.target[0].value;
     let contract = event.target[1].value;
     let collection_id = event.target[2].value;
@@ -163,14 +163,14 @@ function MyNft() {
     alert(res.status);
   };
 
-
-
   let sellNftHandler = async (event) => {
     event.preventDefault();
 
     let tokenID = event.target[0].value;
     let contract = event.target[1].value;
     let price = event.target[2].value;
+    let duration = event.target[3].value;
+    let company = event.target[4].value;
 
     console.log(tokenID);
 
@@ -310,7 +310,11 @@ function MyNft() {
                                 </a>
                               </th>
                               <td>{nft.asset.name}</td>
-                              <td>{nft.contract.slice(0, 3) + "..." + nft.contract.slice(10)}</td>
+                              <td>
+                                {nft.contract.slice(0, 3) +
+                                  "..." +
+                                  nft.contract.slice(10)}
+                              </td>
                               {/* <td>{nft.asset.description}</td> */}
                               <td>
                                 <form onSubmit={handleSubmit}>
@@ -503,14 +507,17 @@ function MyNft() {
                 <form onSubmit={sellNftHandler}>
                   <input hidden="true" value={selectedNFT.token}></input>
                   <input hidden="true" value={selectedNFT.contract}></input>
-                  <MDBInput type={"text"} placeholder="Price"></MDBInput>
+
+                  <MDBInput label="Price" type={"text"}></MDBInput>
+                  <MDBInput label="Duration (Days)" type={"number"}></MDBInput>
+
+                  <MDBInput label="Company Name" type={"text"}></MDBInput>
+
                   <MDBBtn color="success">Sell NFT</MDBBtn>
                 </form>
               ) : (
                 ""
               )}
-
-  
             </MDBModalBody>
           </MDBModalContent>
         </MDBModalDialog>

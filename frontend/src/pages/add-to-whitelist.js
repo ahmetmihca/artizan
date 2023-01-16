@@ -7,11 +7,13 @@ import {
   MDBBtn,
   MDBContainer,
 } from "mdb-react-ui-kit";
+import Cookies from "js-cookie";
+
 import trade_services from "../services/market_serv";
 
 //INTERNAL IMPORT
 
-const AddToWhitelist = ({ addToWhitelist }) => {
+const AddToWhitelist = () => {
   const [username, setUsername] = useState("");
   const [addressToAdd, setAddressToAdd] = useState("");
 
@@ -38,13 +40,26 @@ const AddToWhitelist = ({ addToWhitelist }) => {
         <MDBBtn
           type="submit"
           block
-          onClick={async () =>
-            await trade_services.addToWhitelist(
+          onClick={async (e) => {
+            e.preventDefault();
+            const res = await trade_services.addToWhitelist(
               addressToAdd,
               localStorage.getItem("wallet"),
-              username
-            )
-          }
+              username,
+              Cookies.get("token")
+            );
+            await window.ethereum.request({
+              method: "eth_sendTransaction",
+              params: [
+                {
+                  to: res.to,
+                  from: res.from,
+                  gas: "100000",
+                  data: res.data,
+                },
+              ],
+            });
+          }}
         >
           Add
         </MDBBtn>
