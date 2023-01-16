@@ -8,7 +8,7 @@ var headers = {
   // "Content-Type": 'application/json',
 };
 
-const sell_nft = async (contract, token, price, auth) => {
+const sell_nft = async (contract, token, price, duration, company, auth) => {
   // headers["Content-Type"] = "multipart/form-data";
   headers["Authorization"] = `jwt ${auth}`;
 
@@ -18,6 +18,8 @@ const sell_nft = async (contract, token, price, auth) => {
       contract: contract,
       tokenID: token,
       price: price,
+      duration: duration,
+      company: company,
     },
     { headers: headers }
   );

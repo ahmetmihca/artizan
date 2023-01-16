@@ -171,6 +171,8 @@ function MyNft() {
     let tokenID = event.target[0].value;
     let contract = event.target[1].value;
     let price = event.target[2].value;
+    let duration = event.target[3].value;
+    let company = event.target[4].value;
 
     console.log(tokenID);
 
@@ -178,6 +180,8 @@ function MyNft() {
       contract,
       tokenID,
       price,
+      duration,
+      company,
       Cookies.get("token")
     );
 
