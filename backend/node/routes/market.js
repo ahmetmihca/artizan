@@ -10,17 +10,11 @@ const alchemyAPIUrl = process.env["ALCHEMY_API_URL"];
 
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
-<<<<<<< HEAD
 const marketContractABI = require("../contracts/ArtizanMarket.json");
 const nftContractAddress =
-  "0xa15e32d75d12E93D2c88C175AFcD86d41C783d6C".toLocaleLowerCase();
+  "0x93066686C0659160CEbE6528f2B9967a0Ab331F9".toLocaleLowerCase();
 const marketContractAddress =
-  "0xF92acb3Fdb26ca19aA955feaCD2996f4AaB27b23".toLocaleLowerCase();
-=======
-const marketContractABI = require('../contracts/ArtizanMarket.json')
-const nftContractAddress = "0x93066686C0659160CEbE6528f2B9967a0Ab331F9".toLocaleLowerCase();
-const marketContractAddress = "0x5B55EDe867FE1F6470174C16771bc9D1B9E0fBB1".toLocaleLowerCase();
->>>>>>> 6e6e759c4bc58761903b9c2479fa95f6a2e56ac7
+  "0x5B55EDe867FE1F6470174C16771bc9D1B9E0fBB1".toLocaleLowerCase();
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
