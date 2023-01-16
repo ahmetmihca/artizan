@@ -14,7 +14,6 @@ contract ArtizanMarket is ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _listID;
     address payable owner;
-
     struct ListInfo {
         uint256 nft_id;
         uint256 price;

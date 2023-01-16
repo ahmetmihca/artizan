@@ -9,7 +9,7 @@ const web3 = createAlchemyWeb3(API_URL);
 const contract = require("../artifacts/contracts/ArtizanNFT.sol/ArtizanNFT.json");
 //console.log(JSON.stringify(contract.abi));
 
-const contractAddress = "0x93066686C0659160CEbE6528f2B9967a0Ab331F9";
+const contractAddress = "0x3D8893443F72D437eBbBCe46e4B37dFB4CAe01fa";
 
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 async function mintNFT(tokenURI) {

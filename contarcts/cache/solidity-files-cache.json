@@ -708,8 +708,8 @@
       ]
     },
     "/Users/ugursezerasikoglu/Documents/artizane/contarcts/contracts/ArtizanMarket.sol": {
-      "lastModificationDate": 1673865335520,
-      "contentHash": "67a7df17a64031070431ea8d9f423cee",
+      "lastModificationDate": 1673897756798,
+      "contentHash": "cd5009bb38a4b4222b5b86c0c45b0fd3",
       "sourceName": "contracts/ArtizanMarket.sol",
       "solcConfig": {
         "version": "0.8.1",

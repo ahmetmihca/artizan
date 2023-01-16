@@ -12,9 +12,9 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 const marketContractABI = require("../contracts/ArtizanMarket.json");
 const nftContractAddress =
-  "0x93066686C0659160CEbE6528f2B9967a0Ab331F9".toLocaleLowerCase();
+  "0x3D8893443F72D437eBbBCe46e4B37dFB4CAe01fa".toLocaleLowerCase();
 const marketContractAddress =
-  "0x5B55EDe867FE1F6470174C16771bc9D1B9E0fBB1".toLocaleLowerCase();
+  "0xaF47F2896Cf59F7620eB700B89DBb495C6aa944a".toLocaleLowerCase();
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
