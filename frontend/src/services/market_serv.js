@@ -161,6 +161,9 @@ const trade_services = {
   buyNft,
   create_auction,
   sendBidOffer,
+  isWhitelisted,
+  addToWhitelist,
+  isContractOwner
 };
 
 export default trade_services;

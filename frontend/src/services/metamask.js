@@ -1,3 +1,4 @@
+import trade_services from './market_serv'
 const Web3 = require('web3');
 const web3 = new Web3(window.ethereum);
 let metamask = window.ethereum;
@@ -16,6 +17,9 @@ const onLoginHandler = async () => {
 
     if (accounts !== null) {
       localStorage.setItem("wallet", accounts[0].toLowerCase());
+      let isWhitelisted = await trade_services.isWhitelisted(accounts[0]);
+      localStorage.setItem("isWhitelisted",isWhitelisted)
+      console.log("isWhitelisted:"+isWhitelisted)
       walletConnected = true;
       return accounts[0];
     }
