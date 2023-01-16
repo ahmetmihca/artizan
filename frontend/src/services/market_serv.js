@@ -83,6 +83,8 @@ const addToWhitelist = async (username, walletAddress, auth) => {
     },
     { headers: headers }
   );
+
+  return response.data;
 };
 
 const isContractOwner = async (accountAddress, auth) => {
@@ -120,6 +122,9 @@ const isWhitelisted = async (accountAddress, auth) => {
 const trade_services = {
   sell_nft,
   getMarketItems,
+  isWhitelisted,
+  isContractOwner,
+  addToWhitelist,
   stopSale,
   buyNft,
 };
