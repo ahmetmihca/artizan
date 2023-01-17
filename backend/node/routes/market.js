@@ -167,16 +167,18 @@ router.post("/sell", auth, async (req, res) => {
       marketContractABI.abi,
       marketContractAddress
     );
+
     transaction = await nftContract.methods
       .createMarketItem(
         web3.utils.toWei(price, "ether"),
         tokenInt,
-        duration * 60 * 60 * 24,
+        parseInt(duration) * 60 * 60 * 24,
         nftContractAddress,
         company
       )
       .encodeABI();
   }
+
   if (contract.toLocaleLowerCase() == ContractDetails.nftContractAddress1155) {
     transaction = await Market1155Helper.sellNFT(
       web3.utils.toWei(price, "ether"),
@@ -247,7 +249,7 @@ router.post("/stopSale", auth, async (req, res) => {
   const { contract, tokenID } = req.body;
 
   let stopContract = await globalContract.methods
-    .StopNFTSale(10000000, contract, tokenID)
+    .StopNFTSale(contract, tokenID)
     .encodeABI();
 
   const transactionParameters = {

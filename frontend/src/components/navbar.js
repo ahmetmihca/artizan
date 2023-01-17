@@ -64,19 +64,19 @@ function Navbar(props) {
       localStorage.getItem("wallet"),
       Cookies.get("token")
     );
+    // await window.ethereum.request({
+    //   method: "eth_sendTransaction",
+    //   params: [
+    //     {
+    //       to: res.to,
+    //       from: res.from,
+    //       gas: "100000",
+    //       data: res.data,
+    //     },
+    //   ],
+    // });
 
-    await window.ethereum.request({
-      method: "eth_sendTransaction",
-      params: [
-        {
-          to: res.to,
-          from: res.from,
-          gas: "100000",
-          data: res.data,
-        },
-      ],
-    });
-
+    console.log("res.data:", res.data);
     console.log("from navbar, verify result:", res);
   }
 
