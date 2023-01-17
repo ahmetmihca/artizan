@@ -8,7 +8,6 @@ import {
   MDBBtn,
   MDBContainer,
 } from "mdb-react-ui-kit";
-import Cookies from "js-cookie";
 
 import trade_services from "../services/market_serv";
 
