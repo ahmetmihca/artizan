@@ -41,6 +41,9 @@ function MyNft() {
   const [sellingOption, setSellingOption] = useState("default");
   const [isFetchingNfts, setIsFetchingNfts] = useState(true);
 
+  const nftContractAddress =
+    "0x3D8893443F72D437eBbBCe46e4B37dFB4CAe01fa".toLocaleLowerCase();
+
   const toggleModal = () => {
     setCentredModal(!centredModal);
     setSellingOption("default");
@@ -67,7 +70,8 @@ function MyNft() {
 
         console.log("nfts:", nfts);
 
-        const arr = [];
+        let arr = [];
+
         for (const element of nfts.nfts) {
           let asset = await asset_services.get_asset(
             element.contractAddress,
@@ -83,6 +87,12 @@ function MyNft() {
           arr.push(a);
         }
         console.log("arr:", arr);
+
+        // Eliminate NFTs which are minted on older/outdated contracts
+        arr = arr.filter(
+          (item) => item.contract.toLocaleLowerCase() == nftContractAddress
+        );
+
         setUserNfts(arr);
         console.log("user_nfts", user_nfts);
         console.log("user_nfts", user_nfts);
@@ -262,17 +272,19 @@ function MyNft() {
                 <MDBIcon fas icon="folder-minus" /> My NFTs
               </MDBTabsLink>
             </MDBTabsItem>
-            <MDBTabsItem>
-              <MDBTabsLink
-                onClick={() => {
-                  getOnSaleNfts();
-                  handleFillClick("tab2");
-                }}
-                active={fillActive === "tab2"}
-              >
-                <MDBIcon fas icon="paint-roller" /> On Sale
-              </MDBTabsLink>
-            </MDBTabsItem>
+            {localStorage.getItem("isWhitelisted") === "true" ? (
+              <MDBTabsItem>
+                <MDBTabsLink
+                  onClick={() => {
+                    getOnSaleNfts();
+                    handleFillClick("tab2");
+                  }}
+                  active={fillActive === "tab2"}
+                >
+                  <MDBIcon fas icon="paint-roller" /> On Sale
+                </MDBTabsLink>
+              </MDBTabsItem>
+            ) : null}
           </MDBTabs>
           <hr style={{ marginTop: 0, marginBottom: 18 }} />
 
@@ -287,8 +299,12 @@ function MyNft() {
                       <th scope="col">Name</th>
                       <th scope="col">Contract</th>
                       {/* <th scope='col'>Description</th> */}
-                      <th scope="col">Collection</th>
-                      <th scope="col">Sell NFT</th>
+                      {localStorage.getItem("isWhitelisted") === "true" ? (
+                        <th scope="col">Collection</th>
+                      ) : null}
+                      {localStorage.getItem("isWhitelisted") === "true" ? (
+                        <th scope="col">Sell NFT</th>
+                      ) : null}
                       {/* <th scope='col'>Update</th> */}
                     </tr>
                   </MDBTableHead>
@@ -329,51 +345,58 @@ function MyNft() {
                                     value={nft.contract}
                                   ></input>
 
-                                  <span style={{ display: "-webkit-box" }}>
-                                    <select
-                                      className="form-select w-50"
-                                      name="collection"
-                                    >
-                                      <option disabled>Collection</option>
+                                  {localStorage.getItem("isWhitelisted") ===
+                                  "true" ? (
+                                    <span style={{ display: "-webkit-box" }}>
+                                      <select
+                                        className="form-select w-50"
+                                        name="collection"
+                                      >
+                                        <option disabled>Collection</option>
 
-                                      {collections.map((c, i) => {
-                                        return (
-                                          <option value={c._id}>
-                                            {c.name}
-                                          </option>
-                                        );
-                                      })}
-                                    </select>
-                                    <div style={{ width: 4 }}></div>
-                                    <MDBBtn
-                                      className="ml-2 pl-2"
-                                      color="success"
-                                    >
-                                      <MDBIcon fas icon="save" /> Update
-                                    </MDBBtn>
-                                  </span>
+                                        {collections.map((c, i) => {
+                                          return (
+                                            <option value={c._id}>
+                                              {c.name}
+                                            </option>
+                                          );
+                                        })}
+                                      </select>
+                                      <div style={{ width: 4 }}></div>
+                                      <MDBBtn
+                                        className="ml-2 pl-2"
+                                        color="success"
+                                      >
+                                        <MDBIcon fas icon="save" /> Update
+                                      </MDBBtn>
+                                    </span>
+                                  ) : null}
                                 </form>
                               </td>
                               <td>
-                                <MDBBtn
-                                  color="warning"
-                                  data-contract={nft.contract}
-                                  data-token={nft.token}
-                                  onClick={() => {
-                                    toggleModal();
-                                    console.log(nft.token);
-                                    setSelectedNFT({
-                                      token: nft.token,
-                                      contract: nft.contract,
-                                      img: AssertURL.convert_img(
-                                        nft.asset.imgURL
-                                      ),
-                                      name: nft.asset.name,
-                                    });
-                                  }}
-                                >
-                                  <MDBIcon fas icon="shopping-cart" /> Sell NFT
-                                </MDBBtn>
+                                {localStorage.getItem("isWhitelisted") ===
+                                "true" ? (
+                                  <MDBBtn
+                                    color="warning"
+                                    data-contract={nft.contract}
+                                    data-token={nft.token}
+                                    onClick={() => {
+                                      toggleModal();
+                                      console.log(nft.token);
+                                      setSelectedNFT({
+                                        token: nft.token,
+                                        contract: nft.contract,
+                                        img: AssertURL.convert_img(
+                                          nft.asset.imgURL
+                                        ),
+                                        name: nft.asset.name,
+                                      });
+                                    }}
+                                  >
+                                    <MDBIcon fas icon="shopping-cart" /> Sell
+                                    NFT
+                                  </MDBBtn>
+                                ) : null}
 
                                 {/* <form onSubmit={sellNftHandler}>
                                                             <input hidden='true' value={nft.token}></input>
