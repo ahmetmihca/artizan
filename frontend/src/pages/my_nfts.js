@@ -214,7 +214,7 @@ function MyNft() {
         });
 
         alert(
-          "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
+          "✅ Check out your transaction on Mumbai: https://mumbai.polygonscan.com/tx/" +
             txHash
         );
       }
@@ -250,7 +250,7 @@ function MyNft() {
         });
 
         alert(
-          "✅ Check out your transaction on Polygonscan: https://mumbai.polygonscan.com/tx/" +
+          "✅ Check out your transaction on Mumbai: https://mumbai.polygonscan.com/tx/" +
             txHash
         );
       }

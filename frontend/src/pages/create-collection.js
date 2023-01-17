@@ -25,7 +25,7 @@ function CreateCollection() {
         let res = await collection_services.create_collection(logo,featured,banner,name,description,earning,token, event.target);
 
         if (res != null) {
-            alert("asd");
+            alert("It has been succesfully created!");
         }
 
     }

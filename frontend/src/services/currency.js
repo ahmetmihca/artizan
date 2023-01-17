@@ -5,7 +5,7 @@ function get_user_currency()
     let currency = localStorage.getItem("currency");
     if(currency == null)
     {
-        localStorage.setItem("currency", "eth");
+        localStorage.setItem("currency", "matic");
     }
     else{
         return currency;
@@ -19,11 +19,10 @@ function change_rate(unit)
 
 async function get_current_rate()
 {
-    let rates = await axios.get('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,TRY');
+    let rates = await axios.get('https://min-api.cryptocompare.com/data/price?fsym=MATIC&tsyms=USD,TRY');
     console.log(rates);
     return rates.data;
 }
-
 async function convert_rate(money)
 {
     let unit = get_user_currency();
@@ -34,7 +33,7 @@ async function convert_rate(money)
     else if(unit == 'try'){
         money = money * rate.TRY;
     }
-    else if(unit == 'eth'){
+    else if(unit == 'MATIC'){
         money = money;
     }
     return money;

@@ -41,7 +41,7 @@ function PriceCard(props) {
                         ],
                     });
 
-                alert("✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" + txHash);
+                alert("✅ Check out your transaction on Mumbai: https://mumbai.polygonscan.com/tx/" + txHash);
             }
 
         }
