@@ -18,6 +18,8 @@ import metamask_operations from "../services/metamask";
 import { useNavigate } from "react-router-dom";
 import utils from "../services/utils";
 import login_services from "../services/login_serv";
+import trade_services from "../services/market_serv";
+import Cookies from "js-cookie";
 
 function Navbar(props) {
   const [walletConnected, setWalletConneted] = useState(false);
@@ -53,6 +55,31 @@ function Navbar(props) {
     window.location = path;
   }
 
+  async function verifyHandler(event) {
+    event.preventDefault();
+    const company = event.target[0].value;
+
+    const res = await trade_services.verify(
+      company,
+      localStorage.getItem("wallet"),
+      Cookies.get("token")
+    );
+
+    await window.ethereum.request({
+      method: "eth_sendTransaction",
+      params: [
+        {
+          to: res.to,
+          from: res.from,
+          gas: "100000",
+          data: res.data,
+        },
+      ],
+    });
+
+    console.log("from navbar, verify result:", res);
+  }
+
   async function ProfileHandler() {
     let wallet = localStorage.getItem("wallet");
 
@@ -77,10 +104,22 @@ function Navbar(props) {
             className="form-control-custom px-2 search-bar"
             placeholder="Search items, collections and accounts"
           />
-           <MDBBtn className="search-btn" style={{margin: 0}}>
+          <MDBBtn className="search-btn" style={{ margin: 0 }}>
             <MDBIcon icon="search py-0" size="lg" />
           </MDBBtn>
         </form>
+
+        <form className="input-group ms-4" onSubmit={verifyHandler}>
+          <input
+            type="verify"
+            className="form-control-custom px-2 search-bar"
+            placeholder="Verify your memberships"
+          />
+          <MDBBtn className="search-btn" style={{ margin: 0 }}>
+            <MDBIcon icon="calendar-check py-0" size="lg" />
+          </MDBBtn>
+        </form>
+
         <MDBNavbarNav className="justify-content-end mx-5 my-1">
           {walletConnected & (isContractOwner == "true") ? (
             <MDBNavbarItem className="dropdown">

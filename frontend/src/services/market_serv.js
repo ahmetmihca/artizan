@@ -120,12 +120,28 @@ const isWhitelisted = async (accountAddress, auth) => {
   return response.data;
 };
 
+const verify = async (company, callerAddress, auth) => {
+  headers["Authorization"] = `jwt ${auth}`;
+
+  const response = await axios.post(
+    BASE_URL + `/verify`,
+    {
+      company: company,
+      address: callerAddress,
+    },
+    { headers: headers }
+  );
+
+  return response.data;
+};
+
 const trade_services = {
   sell_nft,
   getMarketItems,
   isWhitelisted,
   isContractOwner,
   addToWhitelist,
+  verify,
   stopSale,
   buyNft,
 };

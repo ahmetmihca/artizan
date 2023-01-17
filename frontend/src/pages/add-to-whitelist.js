@@ -8,7 +8,6 @@ import {
   MDBBtn,
   MDBContainer,
 } from "mdb-react-ui-kit";
-import Cookies from "js-cookie";
 
 import trade_services from "../services/market_serv";
 
@@ -49,6 +48,7 @@ const AddToWhitelist = () => {
               username,
               Cookies.get("token")
             );
+            console.log("from add-to-whitelist, res:", res);
             await window.ethereum.request({
               method: "eth_sendTransaction",
               params: [
