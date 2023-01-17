@@ -3,7 +3,7 @@ import user_services from "../services/user_serv";
 
 var navBarObjects =
 {
-    Explore: ['All NFTs'],
+    Explore: ['All Memberships'],
     Profile: [
         "Favorites", "Watchlist", "My Collections", "My NFTs", "Settings", "Logout"
     ]

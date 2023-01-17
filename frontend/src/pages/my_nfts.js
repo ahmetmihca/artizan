@@ -259,7 +259,7 @@ function MyNft() {
                 onClick={() => handleFillClick("tab1")}
                 active={fillActive === "tab1"}
               >
-                <MDBIcon fas icon="folder-minus" /> My NFTs
+                <MDBIcon fas icon="folder-minus" /> My Memberships
               </MDBTabsLink>
             </MDBTabsItem>
             <MDBTabsItem>
@@ -270,7 +270,7 @@ function MyNft() {
                 }}
                 active={fillActive === "tab2"}
               >
-                <MDBIcon fas icon="paint-roller" /> On Sale
+                <MDBIcon fas icon="paint-roller" /> On Sale Memberships
               </MDBTabsLink>
             </MDBTabsItem>
           </MDBTabs>
@@ -288,7 +288,8 @@ function MyNft() {
                       <th scope="col">Contract</th>
                       {/* <th scope='col'>Description</th> */}
                       <th scope="col">Collection</th>
-                      <th scope="col">Sell NFT</th>
+                      <th scope="col">Sell Memberships</th>
+                      
                       {/* <th scope='col'>Update</th> */}
                     </tr>
                   </MDBTableHead>
@@ -515,7 +516,7 @@ function MyNft() {
 
                   <MDBInput label="Company Name" type={"text"}></MDBInput>
 
-                  <MDBBtn color="success">Sell NFT</MDBBtn>
+                  <MDBBtn color="success">Sell Memberships</MDBBtn>
                 </form>
               ) : (
                 ""

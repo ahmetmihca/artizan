@@ -144,7 +144,7 @@ function Profile(props) {
                             <h5>Shortcuts</h5>
                         </div>
                         <hr></hr>
-                        <MDBBtn className='w-100 float-left' color='light' onClick={()=>{window.location = '/my_nfts'}}> <MDBIcon fas icon="paint-brush" /> My NFTs
+                        <MDBBtn className='w-100 float-left' color='light' onClick={()=>{window.location = '/my_nfts'}}> <MDBIcon fas icon="paint-brush" /> My Memberships
                         </MDBBtn>
                     </MDBCol>
 
@@ -180,11 +180,7 @@ function Profile(props) {
                                     <MDBIcon fas icon="chart-line" />  Activity
                                 </MDBTabsLink>
                             </MDBTabsItem>
-                            <MDBTabsItem>
-                                <MDBTabsLink>
-                                    <MDBIcon fas icon="list" /> Offers
-                                </MDBTabsLink>
-                            </MDBTabsItem>
+
                         </MDBTabs>
                         <hr style={{ marginTop: 0, marginBottom: 18 }} />
 
@@ -192,7 +188,7 @@ function Profile(props) {
 
                             <MDBTabsPane show={fillActive === 'tab1'}>
 
-                                <input id='search_profile' className='form-control' placeholder='🔎 Search NFT' onChange={(evt) => { setFilter(document.getElementById('search_profile').value) }}></input>
+                                <input id='search_profile' className='form-control' placeholder='🔎 Search Membership' onChange={(evt) => { setFilter(document.getElementById('search_profile').value) }}></input>
                                 <MDBRow>
                                     {user_nfts.filter(f => f.asset.name.toLowerCase().includes(filter) || filter === '').map((object, i) =>
                                         <ProductCard className="nft-card" img={object.asset.imgURL} name={object.asset.name} token={object.token} address={object.contract} 

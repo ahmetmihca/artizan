@@ -102,7 +102,7 @@ function Navbar(props) {
           <input
             type="search"
             className="form-control-custom px-2 search-bar"
-            placeholder="Search items, collections and accounts"
+            placeholder="Search memberships, and collections"
           />
           <MDBBtn className="search-btn" style={{ margin: 0 }}>
             <MDBIcon icon="search py-0" size="lg" />
