@@ -269,7 +269,7 @@ function MyNft() {
                 onClick={() => handleFillClick("tab1")}
                 active={fillActive === "tab1"}
               >
-                <MDBIcon fas icon="folder-minus" /> My NFTs
+                <MDBIcon fas icon="folder-minus" /> My Memberships
               </MDBTabsLink>
             </MDBTabsItem>
             {localStorage.getItem("isWhitelisted") === "true" ? (

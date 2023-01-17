@@ -84,7 +84,12 @@ function Navbar(props) {
     <MDBNavbar expand="lg" className="navbar">
       <MDBContainer fluid className="w-100">
         <MDBNavbarBrand href="/" className="mx-3">
-          <img src={logo} id="nav-logo" alt="" />
+          <img
+            src={logo}
+            id="nav-logo"
+            alt=""
+            style={{ width: 60, height: 60 }}
+          />
           Artizan
         </MDBNavbarBrand>
         <form className="input-group ms-4" onSubmit={searchHandler}>
@@ -130,11 +135,13 @@ function Navbar(props) {
             <DropdownList dropdowntype="Explore"></DropdownList>
           </MDBNavbarItem>
 
-          <MDBNavbarItem className="dropdown">
-            <MDBNavbarLink href="/my_nfts" aria-current="page">
-              🎫 My Memberships
-            </MDBNavbarLink>
-          </MDBNavbarItem>
+          {walletConnected ? (
+            <MDBNavbarItem className="dropdown">
+              <MDBNavbarLink href="/my_nfts" aria-current="page">
+                🎫 My Memberships
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+          ) : null}
 
           {walletConnected & (isWhitelisted === "true") ? (
             <MDBNavbarItem>

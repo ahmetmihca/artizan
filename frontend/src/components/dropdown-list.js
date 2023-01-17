@@ -8,6 +8,7 @@ var navBarObjects = {
     "Watchlist",
     "My Collections",
     "My Memberships",
+    "Settings",
     "Logout",
   ],
 };
