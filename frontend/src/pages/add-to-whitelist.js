@@ -48,6 +48,7 @@ const AddToWhitelist = () => {
               username,
               Cookies.get("token")
             );
+            console.log("from add-to-whitelist, res:", res);
             await window.ethereum.request({
               method: "eth_sendTransaction",
               params: [
