@@ -79,7 +79,7 @@ function CreateArt() {
         });
 
         setSatus(
-          "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
+          "✅ Check out your transaction on Mumbai: https://mumbai.polygonscan.com/tx/" +
             txHash
         );
         setProgress(false);
