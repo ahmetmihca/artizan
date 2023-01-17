@@ -6,7 +6,6 @@ import Profile from "../pages/profile";
 import CollectionPage from "../pages/collection";
 import Artwork from "../pages/nft-artwork";
 import CreateArt from "../pages/create-art";
-import Settings from "../pages/settings";
 import CreateCollection from "../pages/create-collection";
 import MyCollection from "../pages/mycollections";
 import SearchPage from "../pages/search";
@@ -27,7 +26,6 @@ export default function MainRouter() {
       <Route path="/asset/:contract/:id" element={<Artwork />} />
       <Route path="/collection/:id" element={<CollectionPage />} />
       <Route path="/all_nfts" element={<ExploreAllNFTs />} />
-      <Route path="/settings/" element={<Settings />} />
       <Route path="/create" element={<CreateArt />} />
       <Route
         path="/create-collection"
@@ -41,7 +39,10 @@ export default function MainRouter() {
       <Route path="/watchlist" element={<WatchlistPage></WatchlistPage>} />
       <Route path="/favorites" element={<Favorites></Favorites>} />
       <Route path="/my_nfts" element={<MyNft></MyNft>} />
-      <Route path="/add-to-whitelist" element={<AddToWhitelist></AddToWhitelist>} />
+      <Route
+        path="/add-to-whitelist"
+        element={<AddToWhitelist></AddToWhitelist>}
+      />
     </Routes>
   );
 }
