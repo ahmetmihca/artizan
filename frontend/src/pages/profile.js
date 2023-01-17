@@ -187,7 +187,7 @@ function Profile(props) {
               }}
             >
               {" "}
-              <MDBIcon fas icon="paint-brush" /> My NFTs
+              <MDBIcon fas icon="paint-brush" /> My Memberships
             </MDBBtn>
           </MDBCol>
 
@@ -233,11 +233,6 @@ function Profile(props) {
                   <MDBIcon fas icon="chart-line" /> Activity
                 </MDBTabsLink>
               </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink>
-                  <MDBIcon fas icon="list" /> Offers
-                </MDBTabsLink>
-              </MDBTabsItem>
             </MDBTabs>
             <hr style={{ marginTop: 0, marginBottom: 18 }} />
 
@@ -246,7 +241,7 @@ function Profile(props) {
                 <input
                   id="search_profile"
                   className="form-control"
-                  placeholder="🔎 Search NFT"
+                  placeholder="🔎 Search Membership"
                   onChange={(evt) => {
                     setFilter(document.getElementById("search_profile").value);
                   }}
