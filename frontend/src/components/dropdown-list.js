@@ -2,7 +2,7 @@ import login_services from "../services/login_serv";
 import user_services from "../services/user_serv";
 
 var navBarObjects = {
-  Explore: ["All Memberships"],
+  Explore: ["All Nfts"],
   Profile: [
     "Favorites",
     "Watchlist",
