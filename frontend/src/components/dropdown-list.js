@@ -17,6 +17,7 @@ if (localStorage.getItem("isWhitelisted") === "false") {
     "Favorites",
     "Watchlist",
     "My Memberships",
+    "Settings",
     "Logout",
   ];
 }

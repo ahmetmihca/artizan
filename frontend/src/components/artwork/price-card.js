@@ -20,48 +20,43 @@ function PriceCard(props) {
   const [currency, setCurrency] = useState(0);
   const [money, setMoney] = useState(0);
 
+    const [currency, setCurrency] = useState(0);
+    const [money, setMoney] = useState(0);
+
+
+    let buyNft = async () => {
+
+        if (localStorage.getItem('wallet') == null) {
+            alert("You need to login to buy NFT");
+            return;
+        }
+
+        let transactionContract =
+            await market_service.buyNft(props.contract, props.token, props.price, localStorage.getItem('wallet'), Cookies.get('token'));
+
+        try {
+            if (transactionContract != null) {
+
+                const txHash = await window.ethereum
+                    .request({
+                        method: 'eth_sendTransaction',
+                        params: [
+                            {
+                                to: transactionContract.to,
+                                from: transactionContract.from,
+                                data: transactionContract.data,
+                                gas: '100000',
+                                value: (props.price * 1e18).toString(16)
+                            }
+                        ],
+                    });
+
+                alert("✅ Check out your transaction on Mumbai: https://mumbai.polygonscan.com/tx/" + txHash);
+            }
+
   useEffect(() => {
     setMoney(props.price);
   }, []);
-
-  let buyNft = async () => {
-    if (localStorage.getItem("wallet") == null) {
-      alert("You need to login to buy NFT");
-      return;
-    }
-
-    let transactionContract = await market_service.buyNft(
-      props.contract,
-      props.token,
-      props.price,
-      localStorage.getItem("wallet"),
-      Cookies.get("token")
-    );
-
-    try {
-      if (transactionContract != null) {
-        const txHash = await window.ethereum.request({
-          method: "eth_sendTransaction",
-          params: [
-            {
-              to: transactionContract.to,
-              from: transactionContract.from,
-              data: transactionContract.data,
-              gas: "100000",
-              value: (props.price * 1e18).toString(16),
-            },
-          ],
-        });
-
-        alert(
-          "✅ Check out your transaction on Etherscan: https://mumbai.polygonscan.com/tx/" +
-            txHash
-        );
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <div>
