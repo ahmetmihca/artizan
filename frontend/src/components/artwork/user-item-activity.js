@@ -68,7 +68,7 @@ function UserActivity(props) {
                                 <td><MDBIcon far icon="calendar" /><span>{element.time}</span></td>
                                 <td ><a href="#" className='addr'>{element.from}</a></td>
                                 <td ><a href="#" className='addr'>{element.to}</a></td>
-                                <td><MDBIcon fas icon="file-import" /><a href={'https://ropsten.etherscan.io/tx/' + element.hash} target="_blank"> See</a></td>
+                                <td><MDBIcon fas icon="file-import" /><a href={'https://mumbai.polygonscan.com/tx/' + element.hash} target="_blank" rel="noreferrer"> See</a></td>
                             </tr>
                         );
                     }) : '...'}

@@ -9,8 +9,8 @@ const headers = {
 };
 
 const get_asset = async (contract, id, type = 0) => {
-    let url = `${BASE_URL}asset/${contract}/${id}`;
-    if(type == "meta"){
+    let url = `${BASE_URL}/asset/${contract}/${id}`;
+    if(type === "meta"){
         url += '?filter=nft_meta';
     }
 
@@ -34,11 +34,19 @@ const get_asset_collection = async (contract, id, type = 0) => {
     }
 };
 
+const get_all_assets = async (type = 0) => {
+    let url = `${BASE_URL}/asset`;
+    if(type === "meta"){
+        url += '?filter=nft_meta';
+    }
 
+    const response = await axios.get(url, headers);
+    return response.data
+};
 
 
 const asset_services = {
-    get_asset, get_asset_collection
+    get_asset, get_asset_collection, get_all_assets
 }
 
 export default asset_services;

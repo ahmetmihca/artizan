@@ -12,9 +12,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const nftContractAddress = "0x7ae5191f057ab66544f4877A951a397D8414D430"
-const marketContractAddress = "0x12d54855199a6A9361C798D0151825843eAD5D55"
-const auctionContractAddress = "0xca8641663E2658b8e09F575f5492D45918f35E1e"
+const nftContractAddress = "0x3D8893443F72D437eBbBCe46e4B37dFB4CAe01fa"
+const marketContractAddress = "0xaF47F2896Cf59F7620eB700B89DBb495C6aa944a"
 
 type TX struct {
 	input string
@@ -22,7 +21,7 @@ type TX struct {
 
 var db *mongo.Database
 
-const mongoURI = "mongodb://localhost:27017" //"mongodb+srv://artizan:9s2NRJi2OpXZlJUH@cluster0.feljg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const mongoURI = "mongodb+srv://admin:admin@cluster0.trsxehj.mongodb.net/?retryWrites=true&w=majority" //"mongodb+srv://artizan:9s2NRJi2OpXZlJUH@cluster0.feljg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 var etherscanClient *etherscan.Client
 

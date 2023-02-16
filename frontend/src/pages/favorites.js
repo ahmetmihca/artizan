@@ -25,7 +25,7 @@ function Favorites() {
 
         if (Cookies.get('token') == null) 
         {
-            alert("asd");
+            alert("It has been succesfully added to favorites!");
             window.location = '/';
         }
         else {

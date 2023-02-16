@@ -12,6 +12,7 @@ const fs = require("fs");
 const path = require("path");
 const Nft = require("../models/nft");
 const check = require("../middlewares/check");
+const { ObjectId } = require("mongodb");
 
 router.get("/my", auth, async (req, res, next) => {
   let collections = await Collection.find({
@@ -113,22 +114,26 @@ router.post("/addToCollection/:collectionId", auth, async (req, res) => {
   const tokenID = req.body.tokenID;
 
   let nft;
-
   if (nftID == null) {
+    let asd = await Nft.find({})
+    console.log(asd)
     if (
-      contractID != null &&
-      tokenID != null &&
-      !isNaN(contractID) &&
-      !isNaN(tokenID)
+      contractID !== null &&
+      tokenID !== null 
     ) {
-      nft = await Nft.findOne({
-        contract: "" + contractID,
+      console.log(+tokenID)
+      // console.log(, +tokenID)
+      const filter = {
+        contract: contractID,
         tokenID: +tokenID,
-      });
+      };
+      console.log({filter});
+      nft = await Nft.findOne(filter);
+      console.log(nft)
 
       if (nft == null) {
         res
-          .status(404)
+          .status(435)
           .send("NFT could not found with given contract and token IDs");
         return;
       }
@@ -139,7 +144,7 @@ router.post("/addToCollection/:collectionId", auth, async (req, res) => {
   } else {
     nft = await Nft.findOne({ _id: nftID });
     if (nft == null) {
-      res.status(404).send("NFT could not found with given ID");
+      res.status(433).send("NFT could not found with given ID");
       return;
     }
   }
@@ -158,12 +163,12 @@ router.post("/addToCollection/:collectionId", auth, async (req, res) => {
   // collection benim mi?
 
   let collection = await Collection.findOne({
-    _id: req.params["collectionId"],
+    _id: ObjectId(req.params["collectionId"]),
     owner_id: req.user._id,
   });
 
   if (collection == null) {
-    res.sendStatus(404);
+    res.sendStatus(431);
     return;
   }
 
@@ -201,7 +206,7 @@ router.get("/fromNFT/:contractID/:tokenID", async (req, res) => {
   });
 
   if (collection == null) {
-    res.sendStatus(404);
+    res.sendStatus(432);
     return;
   }
 
